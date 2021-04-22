@@ -30,10 +30,10 @@ namespace VentasNuevo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea59 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend59 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea60 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend60 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tcTodo = new System.Windows.Forms.TabControl();
             this.tcVentas = new System.Windows.Forms.TabPage();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -537,28 +537,29 @@ namespace VentasNuevo
             // 
             this.chart1.BorderlineColor = System.Drawing.Color.Black;
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea59.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea59);
-            legend59.Name = "Legend1";
-            this.chart1.Legends.Add(legend59);
-            this.chart1.Location = new System.Drawing.Point(16, 6);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Left;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(550, 300);
+            this.chart1.Size = new System.Drawing.Size(550, 475);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
             // chart2
             // 
-            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chart2.BorderlineColor = System.Drawing.Color.Black;
             this.chart2.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea60.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea60);
-            legend60.Name = "Legend1";
-            this.chart2.Legends.Add(legend60);
-            this.chart2.Location = new System.Drawing.Point(560, 6);
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(553, 3);
             this.chart2.Name = "chart2";
-            this.chart2.Size = new System.Drawing.Size(550, 300);
+            this.chart2.Size = new System.Drawing.Size(602, 475);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
             // 
