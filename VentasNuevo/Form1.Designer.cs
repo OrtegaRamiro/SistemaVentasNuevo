@@ -29,11 +29,14 @@ namespace VentasNuevo
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.tcTodo = new System.Windows.Forms.TabControl();
             this.tcVentas = new System.Windows.Forms.TabPage();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -53,38 +56,45 @@ namespace VentasNuevo
             this.tbCantidad = new System.Windows.Forms.TextBox();
             this.tbProducto = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.clmCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtDescPreVen = new System.Windows.Forms.TextBox();
             this.txtDescPreCom = new System.Windows.Forms.TextBox();
-            this.txtProDesc = new System.Windows.Forms.TextBox();
+            this.txtProCont = new System.Windows.Forms.TextBox();
             this.txtDesCant = new System.Windows.Forms.TextBox();
             this.txtProNom = new System.Windows.Forms.TextBox();
-            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.lblContenido = new System.Windows.Forms.Label();
             this.lblCant = new System.Windows.Forms.Label();
             this.lblPreCom = new System.Windows.Forms.Label();
             this.lblPreVen = new System.Windows.Forms.Label();
             this.lblProducto = new System.Windows.Forms.Label();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnVentas = new System.Windows.Forms.Button();
-            this.btnProductos = new System.Windows.Forms.Button();
-            this.btnAdmin = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.clmIdDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmProductos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmConDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPreDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmStoDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.clmIDCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmDepartamentos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnVentas = new System.Windows.Forms.Button();
+            this.btnProductos = new System.Windows.Forms.Button();
+            this.btnAdmin = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txtDescCat = new System.Windows.Forms.TextBox();
+            this.lblCategoria = new System.Windows.Forms.Label();
+            this.lblidPro = new System.Windows.Forms.Label();
+            this.txtDescID = new System.Windows.Forms.TextBox();
+            this.btnDescAgregar = new System.Windows.Forms.Button();
             this.tcTodo.SuspendLayout();
             this.tcVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -93,8 +103,9 @@ namespace VentasNuevo
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // tcTodo
@@ -318,11 +329,38 @@ namespace VentasNuevo
             this.clmPrecio,
             this.clmCantidad});
             this.dataGridView1.Location = new System.Drawing.Point(328, 64);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(621, 226);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowValidated);
+            // 
+            // clmCodigo
+            // 
+            this.clmCodigo.HeaderText = "Codigo";
+            this.clmCodigo.Name = "clmCodigo";
+            this.clmCodigo.ReadOnly = true;
+            this.clmCodigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // clmProducto
+            // 
+            this.clmProducto.HeaderText = "Producto";
+            this.clmProducto.Name = "clmProducto";
+            this.clmProducto.ReadOnly = true;
+            this.clmProducto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // clmPrecio
+            // 
+            this.clmPrecio.HeaderText = "Precio";
+            this.clmPrecio.Name = "clmPrecio";
+            this.clmPrecio.ReadOnly = true;
+            this.clmPrecio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // clmCantidad
+            // 
+            this.clmCantidad.HeaderText = "Cantidad";
+            this.clmCantidad.Name = "clmCantidad";
+            this.clmCantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // tabPage2
             // 
@@ -341,12 +379,18 @@ namespace VentasNuevo
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.btnDescAgregar);
+            this.panel1.Controls.Add(this.txtDescID);
+            this.panel1.Controls.Add(this.lblidPro);
+            this.panel1.Controls.Add(this.lblCategoria);
+            this.panel1.Controls.Add(this.txtDescCat);
+            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.txtDescPreVen);
             this.panel1.Controls.Add(this.txtDescPreCom);
-            this.panel1.Controls.Add(this.txtProDesc);
+            this.panel1.Controls.Add(this.txtProCont);
             this.panel1.Controls.Add(this.txtDesCant);
             this.panel1.Controls.Add(this.txtProNom);
-            this.panel1.Controls.Add(this.lblDescripcion);
+            this.panel1.Controls.Add(this.lblContenido);
             this.panel1.Controls.Add(this.lblCant);
             this.panel1.Controls.Add(this.lblPreCom);
             this.panel1.Controls.Add(this.lblPreVen);
@@ -358,7 +402,7 @@ namespace VentasNuevo
             // 
             // txtDescPreVen
             // 
-            this.txtDescPreVen.Location = new System.Drawing.Point(89, 213);
+            this.txtDescPreVen.Location = new System.Drawing.Point(89, 305);
             this.txtDescPreVen.Name = "txtDescPreVen";
             this.txtDescPreVen.ReadOnly = true;
             this.txtDescPreVen.Size = new System.Drawing.Size(100, 20);
@@ -366,23 +410,23 @@ namespace VentasNuevo
             // 
             // txtDescPreCom
             // 
-            this.txtDescPreCom.Location = new System.Drawing.Point(89, 187);
+            this.txtDescPreCom.Location = new System.Drawing.Point(89, 279);
             this.txtDescPreCom.Name = "txtDescPreCom";
             this.txtDescPreCom.ReadOnly = true;
             this.txtDescPreCom.Size = new System.Drawing.Size(100, 20);
             this.txtDescPreCom.TabIndex = 8;
             // 
-            // txtProDesc
+            // txtProCont
             // 
-            this.txtProDesc.Location = new System.Drawing.Point(33, 93);
-            this.txtProDesc.Name = "txtProDesc";
-            this.txtProDesc.ReadOnly = true;
-            this.txtProDesc.Size = new System.Drawing.Size(193, 20);
-            this.txtProDesc.TabIndex = 7;
+            this.txtProCont.Location = new System.Drawing.Point(33, 157);
+            this.txtProCont.Name = "txtProCont";
+            this.txtProCont.ReadOnly = true;
+            this.txtProCont.Size = new System.Drawing.Size(193, 20);
+            this.txtProCont.TabIndex = 7;
             // 
             // txtDesCant
             // 
-            this.txtDesCant.Location = new System.Drawing.Point(89, 161);
+            this.txtDesCant.Location = new System.Drawing.Point(89, 253);
             this.txtDesCant.Name = "txtDesCant";
             this.txtDesCant.ReadOnly = true;
             this.txtDesCant.Size = new System.Drawing.Size(100, 20);
@@ -390,25 +434,25 @@ namespace VentasNuevo
             // 
             // txtProNom
             // 
-            this.txtProNom.Location = new System.Drawing.Point(89, 15);
+            this.txtProNom.Location = new System.Drawing.Point(89, 66);
             this.txtProNom.Name = "txtProNom";
             this.txtProNom.ReadOnly = true;
             this.txtProNom.Size = new System.Drawing.Size(100, 20);
             this.txtProNom.TabIndex = 5;
             // 
-            // lblDescripcion
+            // lblContenido
             // 
-            this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(30, 77);
-            this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(66, 13);
-            this.lblDescripcion.TabIndex = 4;
-            this.lblDescripcion.Text = "Descripcion:";
+            this.lblContenido.AutoSize = true;
+            this.lblContenido.Location = new System.Drawing.Point(30, 141);
+            this.lblContenido.Name = "lblContenido";
+            this.lblContenido.Size = new System.Drawing.Size(58, 13);
+            this.lblContenido.TabIndex = 4;
+            this.lblContenido.Text = "Contenido:";
             // 
             // lblCant
             // 
             this.lblCant.AutoSize = true;
-            this.lblCant.Location = new System.Drawing.Point(30, 161);
+            this.lblCant.Location = new System.Drawing.Point(30, 253);
             this.lblCant.Name = "lblCant";
             this.lblCant.Size = new System.Drawing.Size(52, 13);
             this.lblCant.TabIndex = 3;
@@ -417,7 +461,7 @@ namespace VentasNuevo
             // lblPreCom
             // 
             this.lblPreCom.AutoSize = true;
-            this.lblPreCom.Location = new System.Drawing.Point(4, 190);
+            this.lblPreCom.Location = new System.Drawing.Point(4, 282);
             this.lblPreCom.Name = "lblPreCom";
             this.lblPreCom.Size = new System.Drawing.Size(79, 13);
             this.lblPreCom.TabIndex = 2;
@@ -426,7 +470,7 @@ namespace VentasNuevo
             // lblPreVen
             // 
             this.lblPreVen.AutoSize = true;
-            this.lblPreVen.Location = new System.Drawing.Point(12, 216);
+            this.lblPreVen.Location = new System.Drawing.Point(12, 308);
             this.lblPreVen.Name = "lblPreVen";
             this.lblPreVen.Size = new System.Drawing.Size(71, 13);
             this.lblPreVen.TabIndex = 1;
@@ -435,7 +479,7 @@ namespace VentasNuevo
             // lblProducto
             // 
             this.lblProducto.AutoSize = true;
-            this.lblProducto.Location = new System.Drawing.Point(30, 18);
+            this.lblProducto.Location = new System.Drawing.Point(30, 69);
             this.lblProducto.Name = "lblProducto";
             this.lblProducto.Size = new System.Drawing.Size(53, 13);
             this.lblProducto.TabIndex = 0;
@@ -464,104 +508,6 @@ namespace VentasNuevo
             this.dgvProductos.Size = new System.Drawing.Size(519, 460);
             this.dgvProductos.TabIndex = 1;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmIDCategoria,
-            this.clmDepartamentos});
-            this.dataGridView2.Location = new System.Drawing.Point(43, 6);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(240, 460);
-            this.dataGridView2.TabIndex = 0;
-            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.chart2);
-            this.tabPage1.Controls.Add(this.chart1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1158, 481);
-            this.tabPage1.TabIndex = 2;
-            this.tabPage1.Text = "Admin";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnVentas
-            // 
-            this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
-            this.btnVentas.Location = new System.Drawing.Point(80, 34);
-            this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(75, 92);
-            this.btnVentas.TabIndex = 1;
-            this.btnVentas.Text = "Ventas";
-            this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnVentas.UseVisualStyleBackColor = true;
-            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
-            // 
-            // btnProductos
-            // 
-            this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
-            this.btnProductos.Location = new System.Drawing.Point(162, 33);
-            this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(75, 92);
-            this.btnProductos.TabIndex = 2;
-            this.btnProductos.Text = "Productos";
-            this.btnProductos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnProductos.UseVisualStyleBackColor = true;
-            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
-            // 
-            // btnAdmin
-            // 
-            this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
-            this.btnAdmin.Location = new System.Drawing.Point(244, 32);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(75, 92);
-            this.btnAdmin.TabIndex = 3;
-            this.btnAdmin.Text = "Admin";
-            this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdmin.UseVisualStyleBackColor = true;
-            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
-            // 
-            // chart1
-            // 
-            this.chart1.BorderlineColor = System.Drawing.Color.Black;
-            this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            this.chart1.Dock = System.Windows.Forms.DockStyle.Left;
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(3, 3);
-            this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(550, 475);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
-            // chart2
-            // 
-            this.chart2.BorderlineColor = System.Drawing.Color.Black;
-            this.chart2.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            this.chart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(553, 3);
-            this.chart2.Name = "chart2";
-            this.chart2.Size = new System.Drawing.Size(602, 475);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
             // 
             // clmIdDesc
             // 
@@ -603,6 +549,26 @@ namespace VentasNuevo
             this.clmStoDesc.ReadOnly = true;
             this.clmStoDesc.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeColumns = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
+            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmIDCategoria,
+            this.clmDepartamentos});
+            this.dataGridView2.Location = new System.Drawing.Point(43, 6);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.Size = new System.Drawing.Size(240, 460);
+            this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
+            // 
             // clmIDCategoria
             // 
             this.clmIDCategoria.DataPropertyName = "nombre";
@@ -618,33 +584,165 @@ namespace VentasNuevo
             this.clmDepartamentos.ReadOnly = true;
             this.clmDepartamentos.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
-            // clmCodigo
+            // tabPage1
             // 
-            this.clmCodigo.HeaderText = "Codigo";
-            this.clmCodigo.Name = "clmCodigo";
-            this.clmCodigo.ReadOnly = true;
-            this.clmCodigo.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.tabPage1.Controls.Add(this.chart3);
+            this.tabPage1.Controls.Add(this.chart2);
+            this.tabPage1.Controls.Add(this.chart1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1158, 481);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Admin";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // clmProducto
+            // chart3
             // 
-            this.clmProducto.HeaderText = "Producto";
-            this.clmProducto.Name = "clmProducto";
-            this.clmProducto.ReadOnly = true;
-            this.clmProducto.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.chart3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea4.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart3.Legends.Add(legend4);
+            this.chart3.Location = new System.Drawing.Point(553, 249);
+            this.chart3.Name = "chart3";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pyramid;
+            series2.IsValueShownAsLabel = true;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 4;
+            this.chart3.Series.Add(series2);
+            this.chart3.Size = new System.Drawing.Size(602, 227);
+            this.chart3.TabIndex = 2;
+            this.chart3.Text = "chart3";
             // 
-            // clmPrecio
+            // chart2
             // 
-            this.clmPrecio.HeaderText = "Precio";
-            this.clmPrecio.Name = "clmPrecio";
-            this.clmPrecio.ReadOnly = true;
-            this.clmPrecio.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart2.BorderlineColor = System.Drawing.Color.Black;
+            this.chart2.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
+            chartArea5.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chart2.Legends.Add(legend5);
+            this.chart2.Location = new System.Drawing.Point(553, 3);
+            this.chart2.Name = "chart2";
+            this.chart2.Size = new System.Drawing.Size(602, 240);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "chart2";
             // 
-            // clmCantidad
+            // chart1
             // 
-            this.clmCantidad.HeaderText = "Cantidad";
-            this.clmCantidad.Name = "clmCantidad";
-            this.clmCantidad.ReadOnly = true;
-            this.clmCantidad.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.chart1.BorderlineColor = System.Drawing.Color.Black;
+            this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
+            chartArea6.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea6);
+            this.chart1.Dock = System.Windows.Forms.DockStyle.Left;
+            legend6.Name = "Legend1";
+            this.chart1.Legends.Add(legend6);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            this.chart1.Size = new System.Drawing.Size(550, 475);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
+            // btnVentas
+            // 
+            this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
+            this.btnVentas.Location = new System.Drawing.Point(80, 34);
+            this.btnVentas.Name = "btnVentas";
+            this.btnVentas.Size = new System.Drawing.Size(75, 92);
+            this.btnVentas.TabIndex = 1;
+            this.btnVentas.Text = "Ventas";
+            this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVentas.UseVisualStyleBackColor = true;
+            this.btnVentas.Click += new System.EventHandler(this.btnVentas_Click);
+            // 
+            // btnProductos
+            // 
+            this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
+            this.btnProductos.Location = new System.Drawing.Point(162, 33);
+            this.btnProductos.Name = "btnProductos";
+            this.btnProductos.Size = new System.Drawing.Size(75, 92);
+            this.btnProductos.TabIndex = 2;
+            this.btnProductos.Text = "Productos";
+            this.btnProductos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnProductos.UseVisualStyleBackColor = true;
+            this.btnProductos.Click += new System.EventHandler(this.btnProductos_Click);
+            // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
+            this.btnAdmin.Location = new System.Drawing.Point(244, 32);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(75, 92);
+            this.btnAdmin.TabIndex = 3;
+            this.btnAdmin.Text = "Admin";
+            this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Ver",
+            "Agregar"});
+            this.comboBox1.Location = new System.Drawing.Point(77, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 10;
+            this.comboBox1.Text = "Ver";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // txtDescCat
+            // 
+            this.txtDescCat.Location = new System.Drawing.Point(89, 92);
+            this.txtDescCat.Name = "txtDescCat";
+            this.txtDescCat.ReadOnly = true;
+            this.txtDescCat.Size = new System.Drawing.Size(100, 20);
+            this.txtDescCat.TabIndex = 11;
+            // 
+            // lblCategoria
+            // 
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Location = new System.Drawing.Point(27, 95);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(55, 13);
+            this.lblCategoria.TabIndex = 12;
+            this.lblCategoria.Text = "Categoria:";
+            // 
+            // lblidPro
+            // 
+            this.lblidPro.AutoSize = true;
+            this.lblidPro.Location = new System.Drawing.Point(61, 47);
+            this.lblidPro.Name = "lblidPro";
+            this.lblidPro.Size = new System.Drawing.Size(21, 13);
+            this.lblidPro.TabIndex = 13;
+            this.lblidPro.Text = "ID:";
+            // 
+            // txtDescID
+            // 
+            this.txtDescID.Location = new System.Drawing.Point(89, 40);
+            this.txtDescID.Name = "txtDescID";
+            this.txtDescID.ReadOnly = true;
+            this.txtDescID.Size = new System.Drawing.Size(100, 20);
+            this.txtDescID.TabIndex = 14;
+            // 
+            // btnDescAgregar
+            // 
+            this.btnDescAgregar.Enabled = false;
+            this.btnDescAgregar.Location = new System.Drawing.Point(103, 353);
+            this.btnDescAgregar.Name = "btnDescAgregar";
+            this.btnDescAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnDescAgregar.TabIndex = 15;
+            this.btnDescAgregar.Text = "Agregar";
+            this.btnDescAgregar.UseVisualStyleBackColor = true;
+            this.btnDescAgregar.Click += new System.EventHandler(this.btnDescAgregar_Click);
             // 
             // Form1
             // 
@@ -668,8 +766,9 @@ namespace VentasNuevo
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -699,10 +798,10 @@ namespace VentasNuevo
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtDescPreVen;
         private System.Windows.Forms.TextBox txtDescPreCom;
-        private System.Windows.Forms.TextBox txtProDesc;
+        private System.Windows.Forms.TextBox txtProCont;
         private System.Windows.Forms.TextBox txtDesCant;
         private System.Windows.Forms.TextBox txtProNom;
-        private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.Label lblContenido;
         private System.Windows.Forms.Label lblCant;
         private System.Windows.Forms.Label lblPreCom;
         private System.Windows.Forms.Label lblPreVen;
@@ -716,10 +815,6 @@ namespace VentasNuevo
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCodigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmProducto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrecio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmIdDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmConDesc;
@@ -727,6 +822,17 @@ namespace VentasNuevo
         private System.Windows.Forms.DataGridViewTextBoxColumn clmStoDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmIDCategoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDepartamentos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProducto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCantidad;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lblCategoria;
+        private System.Windows.Forms.TextBox txtDescCat;
+        private System.Windows.Forms.TextBox txtDescID;
+        private System.Windows.Forms.Label lblidPro;
+        private System.Windows.Forms.Button btnDescAgregar;
     }
 }
 
