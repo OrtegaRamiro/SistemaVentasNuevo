@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\admin.png" />
+    <Content Include="img\Reporte.png" />
     <Content Include="img\Productos.png" />
     <Content Include="img\Ventas.png" />
   </ItemGroup>

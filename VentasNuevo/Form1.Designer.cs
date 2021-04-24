@@ -29,14 +29,19 @@ namespace VentasNuevo
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tcTodo = new System.Windows.Forms.TabControl();
             this.tcVentas = new System.Windows.Forms.TabPage();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -62,6 +67,12 @@ namespace VentasNuevo
             this.clmCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDescAgregar = new System.Windows.Forms.Button();
+            this.txtDescID = new System.Windows.Forms.TextBox();
+            this.lblidPro = new System.Windows.Forms.Label();
+            this.lblCategoria = new System.Windows.Forms.Label();
+            this.txtDescCat = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtDescPreVen = new System.Windows.Forms.TextBox();
             this.txtDescPreCom = new System.Windows.Forms.TextBox();
             this.txtProCont = new System.Windows.Forms.TextBox();
@@ -89,12 +100,13 @@ namespace VentasNuevo
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.txtDescCat = new System.Windows.Forms.TextBox();
-            this.lblCategoria = new System.Windows.Forms.Label();
-            this.lblidPro = new System.Windows.Forms.Label();
-            this.txtDescID = new System.Windows.Forms.TextBox();
-            this.btnDescAgregar = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvReportes = new System.Windows.Forms.DataGridView();
+            this.clmAnio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReporte = new System.Windows.Forms.Button();
+            this.chartReport = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tcTodo.SuspendLayout();
             this.tcVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -106,6 +118,9 @@ namespace VentasNuevo
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReportes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartReport)).BeginInit();
             this.SuspendLayout();
             // 
             // tcTodo
@@ -117,6 +132,7 @@ namespace VentasNuevo
             this.tcTodo.Controls.Add(this.tcVentas);
             this.tcTodo.Controls.Add(this.tabPage2);
             this.tcTodo.Controls.Add(this.tabPage1);
+            this.tcTodo.Controls.Add(this.tabPage3);
             this.tcTodo.Location = new System.Drawing.Point(0, 141);
             this.tcTodo.Multiline = true;
             this.tcTodo.Name = "tcTodo";
@@ -400,6 +416,64 @@ namespace VentasNuevo
             this.panel1.Size = new System.Drawing.Size(314, 460);
             this.panel1.TabIndex = 2;
             // 
+            // btnDescAgregar
+            // 
+            this.btnDescAgregar.Enabled = false;
+            this.btnDescAgregar.Location = new System.Drawing.Point(103, 353);
+            this.btnDescAgregar.Name = "btnDescAgregar";
+            this.btnDescAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnDescAgregar.TabIndex = 15;
+            this.btnDescAgregar.Text = "Agregar";
+            this.btnDescAgregar.UseVisualStyleBackColor = true;
+            this.btnDescAgregar.Click += new System.EventHandler(this.btnDescAgregar_Click);
+            // 
+            // txtDescID
+            // 
+            this.txtDescID.Location = new System.Drawing.Point(89, 40);
+            this.txtDescID.Name = "txtDescID";
+            this.txtDescID.ReadOnly = true;
+            this.txtDescID.Size = new System.Drawing.Size(100, 20);
+            this.txtDescID.TabIndex = 14;
+            // 
+            // lblidPro
+            // 
+            this.lblidPro.AutoSize = true;
+            this.lblidPro.Location = new System.Drawing.Point(61, 47);
+            this.lblidPro.Name = "lblidPro";
+            this.lblidPro.Size = new System.Drawing.Size(21, 13);
+            this.lblidPro.TabIndex = 13;
+            this.lblidPro.Text = "ID:";
+            // 
+            // lblCategoria
+            // 
+            this.lblCategoria.AutoSize = true;
+            this.lblCategoria.Location = new System.Drawing.Point(27, 95);
+            this.lblCategoria.Name = "lblCategoria";
+            this.lblCategoria.Size = new System.Drawing.Size(55, 13);
+            this.lblCategoria.TabIndex = 12;
+            this.lblCategoria.Text = "Categoria:";
+            // 
+            // txtDescCat
+            // 
+            this.txtDescCat.Location = new System.Drawing.Point(89, 92);
+            this.txtDescCat.Name = "txtDescCat";
+            this.txtDescCat.ReadOnly = true;
+            this.txtDescCat.Size = new System.Drawing.Size(100, 20);
+            this.txtDescCat.TabIndex = 11;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Ver",
+            "Agregar"});
+            this.comboBox1.Location = new System.Drawing.Point(77, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 10;
+            this.comboBox1.Text = "Ver";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // txtDescPreVen
             // 
             this.txtDescPreVen.Location = new System.Drawing.Point(89, 305);
@@ -601,19 +675,18 @@ namespace VentasNuevo
             // 
             this.chart3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea4.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chart3.Legends.Add(legend4);
+            chartArea1.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart3.Legends.Add(legend1);
             this.chart3.Location = new System.Drawing.Point(553, 249);
             this.chart3.Name = "chart3";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pyramid;
-            series2.IsValueShownAsLabel = true;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 4;
-            this.chart3.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.chart3.Series.Add(series1);
             this.chart3.Size = new System.Drawing.Size(602, 227);
             this.chart3.TabIndex = 2;
             this.chart3.Text = "chart3";
@@ -625,12 +698,18 @@ namespace VentasNuevo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart2.BorderlineColor = System.Drawing.Color.Black;
             this.chart2.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea5.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chart2.Legends.Add(legend5);
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(553, 3);
             this.chart2.Name = "chart2";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(602, 240);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
@@ -639,11 +718,11 @@ namespace VentasNuevo
             // 
             this.chart1.BorderlineColor = System.Drawing.Color.Black;
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea6.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea6);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Left;
-            legend6.Name = "Legend1";
-            this.chart1.Legends.Add(legend6);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(550, 475);
@@ -653,9 +732,9 @@ namespace VentasNuevo
             // btnVentas
             // 
             this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
-            this.btnVentas.Location = new System.Drawing.Point(80, 34);
+            this.btnVentas.Location = new System.Drawing.Point(80, 25);
             this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(75, 92);
+            this.btnVentas.Size = new System.Drawing.Size(75, 101);
             this.btnVentas.TabIndex = 1;
             this.btnVentas.Text = "Ventas";
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -665,9 +744,9 @@ namespace VentasNuevo
             // btnProductos
             // 
             this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
-            this.btnProductos.Location = new System.Drawing.Point(162, 33);
+            this.btnProductos.Location = new System.Drawing.Point(162, 25);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(75, 92);
+            this.btnProductos.Size = new System.Drawing.Size(75, 100);
             this.btnProductos.TabIndex = 2;
             this.btnProductos.Text = "Productos";
             this.btnProductos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -677,78 +756,124 @@ namespace VentasNuevo
             // btnAdmin
             // 
             this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
-            this.btnAdmin.Location = new System.Drawing.Point(244, 32);
+            this.btnAdmin.Location = new System.Drawing.Point(244, 25);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(75, 92);
+            this.btnAdmin.Size = new System.Drawing.Size(75, 99);
             this.btnAdmin.TabIndex = 3;
             this.btnAdmin.Text = "Admin";
             this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdmin.UseVisualStyleBackColor = true;
             this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
-            // comboBox1
+            // tabPage3
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Ver",
-            "Agregar"});
-            this.comboBox1.Location = new System.Drawing.Point(77, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 10;
-            this.comboBox1.Text = "Ver";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.tabPage3.Controls.Add(this.chartReport);
+            this.tabPage3.Controls.Add(this.dgvReportes);
+            this.tabPage3.Location = new System.Drawing.Point(4, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1158, 481);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "Reportes de Ventas";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // txtDescCat
+            // dgvReportes
             // 
-            this.txtDescCat.Location = new System.Drawing.Point(89, 92);
-            this.txtDescCat.Name = "txtDescCat";
-            this.txtDescCat.ReadOnly = true;
-            this.txtDescCat.Size = new System.Drawing.Size(100, 20);
-            this.txtDescCat.TabIndex = 11;
+            this.dgvReportes.AllowUserToAddRows = false;
+            this.dgvReportes.AllowUserToDeleteRows = false;
+            this.dgvReportes.AllowUserToResizeColumns = false;
+            this.dgvReportes.AllowUserToResizeRows = false;
+            this.dgvReportes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvReportes.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgvReportes.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenVertical;
+            this.dgvReportes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReportes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmAnio,
+            this.clmMes,
+            this.clmVentas});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReportes.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvReportes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dgvReportes.Location = new System.Drawing.Point(6, 6);
+            this.dgvReportes.Name = "dgvReportes";
+            this.dgvReportes.ReadOnly = true;
+            this.dgvReportes.Size = new System.Drawing.Size(640, 469);
+            this.dgvReportes.TabIndex = 0;
             // 
-            // lblCategoria
+            // clmAnio
             // 
-            this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(27, 95);
-            this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(55, 13);
-            this.lblCategoria.TabIndex = 12;
-            this.lblCategoria.Text = "Categoria:";
+            this.clmAnio.DataPropertyName = "Año";
+            this.clmAnio.HeaderText = "Año";
+            this.clmAnio.Name = "clmAnio";
+            this.clmAnio.ReadOnly = true;
             // 
-            // lblidPro
+            // clmMes
             // 
-            this.lblidPro.AutoSize = true;
-            this.lblidPro.Location = new System.Drawing.Point(61, 47);
-            this.lblidPro.Name = "lblidPro";
-            this.lblidPro.Size = new System.Drawing.Size(21, 13);
-            this.lblidPro.TabIndex = 13;
-            this.lblidPro.Text = "ID:";
+            this.clmMes.DataPropertyName = "Mes";
+            this.clmMes.HeaderText = "Mes";
+            this.clmMes.Name = "clmMes";
+            this.clmMes.ReadOnly = true;
             // 
-            // txtDescID
+            // clmVentas
             // 
-            this.txtDescID.Location = new System.Drawing.Point(89, 40);
-            this.txtDescID.Name = "txtDescID";
-            this.txtDescID.ReadOnly = true;
-            this.txtDescID.Size = new System.Drawing.Size(100, 20);
-            this.txtDescID.TabIndex = 14;
+            this.clmVentas.DataPropertyName = "Total";
+            this.clmVentas.HeaderText = "Ventas Totales";
+            this.clmVentas.Name = "clmVentas";
+            this.clmVentas.ReadOnly = true;
             // 
-            // btnDescAgregar
+            // btnReporte
             // 
-            this.btnDescAgregar.Enabled = false;
-            this.btnDescAgregar.Location = new System.Drawing.Point(103, 353);
-            this.btnDescAgregar.Name = "btnDescAgregar";
-            this.btnDescAgregar.Size = new System.Drawing.Size(75, 23);
-            this.btnDescAgregar.TabIndex = 15;
-            this.btnDescAgregar.Text = "Agregar";
-            this.btnDescAgregar.UseVisualStyleBackColor = true;
-            this.btnDescAgregar.Click += new System.EventHandler(this.btnDescAgregar_Click);
+            this.btnReporte.Image = ((System.Drawing.Image)(resources.GetObject("btnReporte.Image")));
+            this.btnReporte.Location = new System.Drawing.Point(325, 25);
+            this.btnReporte.Name = "btnReporte";
+            this.btnReporte.Size = new System.Drawing.Size(75, 101);
+            this.btnReporte.TabIndex = 4;
+            this.btnReporte.Text = "Reportes";
+            this.btnReporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnReporte.UseVisualStyleBackColor = true;
+            this.btnReporte.Click += new System.EventHandler(this.btnReporte_Click);
+            // 
+            // chartReport
+            // 
+            this.chartReport.BackColor = System.Drawing.Color.LightGray;
+            this.chartReport.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
+            this.chartReport.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.chartReport.BorderlineColor = System.Drawing.Color.Transparent;
+            chartArea4.Name = "ChartArea1";
+            this.chartReport.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartReport.Legends.Add(legend4);
+            this.chartReport.Location = new System.Drawing.Point(652, 6);
+            this.chartReport.Name = "chartReport";
+            series3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            series3.BorderWidth = 5;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.LabelBorderWidth = 10;
+            series3.Legend = "Legend1";
+            series3.MarkerBorderColor = System.Drawing.Color.Black;
+            series3.MarkerBorderWidth = 5;
+            series3.MarkerColor = System.Drawing.Color.Black;
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Comportamiento";
+            this.chartReport.Series.Add(series3);
+            this.chartReport.Size = new System.Drawing.Size(498, 300);
+            this.chartReport.TabIndex = 1;
+            this.chartReport.Text = "chart4";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1166, 648);
+            this.Controls.Add(this.btnReporte);
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.btnProductos);
             this.Controls.Add(this.btnVentas);
@@ -769,6 +894,9 @@ namespace VentasNuevo
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReportes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chartReport)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -833,6 +961,13 @@ namespace VentasNuevo
         private System.Windows.Forms.TextBox txtDescID;
         private System.Windows.Forms.Label lblidPro;
         private System.Windows.Forms.Button btnDescAgregar;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dgvReportes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmAnio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmMes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmVentas;
+        private System.Windows.Forms.Button btnReporte;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartReport;
     }
 }
 

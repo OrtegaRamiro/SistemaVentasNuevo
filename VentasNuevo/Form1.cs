@@ -37,7 +37,9 @@ namespace VentasNuevo
             tamTextBox();
             VentasTotalesGRA();
             VentasTotalesCAT();
-           Prueba();
+            Prueba();
+            cargardgvRepor();
+            GraficaReportes();
         }
 
         /*-------------------------ALTERNAR COLORES EN DATAGRIDVIEWS-------------------------*/
@@ -66,6 +68,12 @@ namespace VentasNuevo
         {
             tcTodo.SelectedIndex = 2;
 
+        }
+
+        /*-------------------------BOTON DE REPORTES-------------------------*/
+        private void btnReporte_Click(object sender, EventArgs e)
+        {
+            tcTodo.SelectedIndex = 3;
         }
 
         /*-------------------------BOTON QUE AGREGA COSAS QUE SE COMPRARAN-------------------------*/
@@ -417,6 +425,7 @@ namespace VentasNuevo
             dataGridView1.RowHeadersVisible = false;
             dataGridView2.RowHeadersVisible = false;
             dgvProductos.RowHeadersVisible = false;
+            dgvReportes.RowHeadersVisible = false;
         }
 
         private void limpiarTXBox()
@@ -458,31 +467,23 @@ namespace VentasNuevo
                 }
             }
         }
+
         private void VentasTotalesCAT()
         {
-            string VenTotales = "SELECT c.nombre, sum(p.VentasTotales) FROM Productos p join Categoria c ON c.idCategoria = p.idCategoria GROUP BY c.nombre;";
-            SqlDataAdapter da = new SqlDataAdapter(VenTotales, conexion);
-            DataTable dt = new DataTable();
-            DataRow dr;
-            da.Fill(dt);
-            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            this.chart2.Titles.Add("Mejores Categorias");
-            
-            if (dt.Rows.Count > 0)
+            conexion.Open();
+            string VenTotales = "SELECT DATENAME(MONTH, DATEADD(MONTH, MONTH(Fecha),-1)) as Mes, sum(Total) AS Total FROM Cobranza WHERE YEAR(FECHA) = YEAR(GETDATE()) GROUP BY YEAR(Fecha), MONTH(Fecha) ORDER BY  Mes ;";
+            ArrayList Mes = new ArrayList();
+            ArrayList Total = new ArrayList();
+
+            SqlCommand cmd = new SqlCommand(VenTotales, conexion);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
             {
-
-                for (int i = 0; i < dt.Rows.Count; i++)
-                {
-                    dr = dt.Rows[i];
-
-                    Series series = chart2.Series.Add(dr.ItemArray[0].ToString());
-                   // chart2.Series[0].ChartType = SeriesChartType.Pie;
-
-                    series.Points.Add(Convert.ToDouble(dr.ItemArray[1]));
-                   // series.ChartType = SeriesChartType.Line;
-
-                }
+                Mes.Add(dr.GetString(0));
+                Total.Add(dr.GetDecimal(1));
             }
+            chart2.Series[0].Points.DataBindXY(Mes, Total);
+            conexion.Close();
         }
         private void Prueba()
         {
@@ -573,6 +574,7 @@ namespace VentasNuevo
             conexion.Close();
             limpTXB2();
             MessageBox.Show("PRODUCTO AGREGADO CORRECTAMENTE");
+
         }
         private int valorIDProducto(int val1)
         {
@@ -586,6 +588,45 @@ namespace VentasNuevo
             }
             conexion.Close();
             return val1;
+        }
+        private void cargardgvRepor()
+        {
+            string reporte = "SELECT Year(Fecha) as Año, DATENAME(MONTH, DATEADD(MONTH, MONTH(Fecha),-1)) as Mes, sum(Total) AS Total FROM Cobranza GROUP BY YEAR(Fecha), MONTH(Fecha) ORDER BY año, Mes DESC";
+
+
+          //  String com = "Select idcategoria, nombre from Categoria";
+
+
+            conexion.Open();
+            using (SqlCommand cmd = new SqlCommand(reporte, conexion))
+            {
+                DataGridViewRow fila = new DataGridViewRow();
+                fila.CreateCells(dgvReportes);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvReportes.DataSource = dt;
+
+            conexion.Close();
+            }
+        }
+        private void GraficaReportes()
+        {
+            conexion.Open();
+            string VenTotales = "SELECT DATENAME(MONTH, DATEADD(MONTH, MONTH(Fecha),-1)) as Mes, sum(Total) AS Total FROM Cobranza WHERE YEAR(FECHA) = YEAR(GETDATE()) GROUP BY YEAR(Fecha), MONTH(Fecha) ORDER BY  Mes DESC;";
+            ArrayList Mes = new ArrayList();
+            ArrayList Total = new ArrayList();
+
+            SqlCommand cmd = new SqlCommand(VenTotales, conexion);
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                Mes.Add(dr.GetString(0));
+                Total.Add(dr.GetDecimal(1));
+            }
+            chartReport.Series[0].Points.DataBindXY(Mes, Total);
+            conexion.Close();
         }
     }
 }
