@@ -18,9 +18,11 @@ namespace VentasNuevo
     public partial class Form1 : Form
     {
         SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-74BBU83\\SQLEXPRESS ; Initial Catalog=VENTAS ; integrated security = true");
+
         double TotalC = 0;
         string valorCelda2;
         string valorCelda;
+
         public Form1()
         {
             InitializeComponent();
@@ -47,6 +49,7 @@ namespace VentasNuevo
             cargardgvRepor();
             GraficaReportes();
             CombCategorias();
+            lblUsuario();
             comboBox1.SelectedIndex = 0;
             cbCategoria.SelectedIndex = 0;
         }
@@ -82,9 +85,21 @@ namespace VentasNuevo
         /*-------------------------BOTON DE REPORTES-------------------------*/
         private void btnReporte_Click(object sender, EventArgs e)
         {
+            cargardgvRepor();
+            GraficaReportes();
+
             tcTodo.SelectedIndex = 3;
-            dgvReportes.CurrentCell.Selected = false;
-            dgvReportes.ClearSelection();
+            if(dgvProductos.Rows.Count == 0)
+            {
+
+            }
+            else
+            {
+                dgvReportes.CurrentCell.Selected = false;
+                dgvReportes.ClearSelection();
+            }
+            //dgvReportes.CurrentCell.Selected = false;
+            //  dgvReportes.ClearSelection();
         }
 
         /*-------------------------BOTON DE CORTE-------------------------*/
@@ -215,12 +230,14 @@ namespace VentasNuevo
         /*-------------------------AGREGAR COBRO NORMAL A BD-------------------------*/
         private void CobroBD(float Iva, float total)
         {
-            String Cobranza = "INSERT INTO Cobranza (Fecha, IVA, Total) VALUES (GETDATE(), @Iva, @Total)";
+            String Cobranza = "INSERT INTO Cobranza (Fecha, IVA, Total, idUsuario) VALUES (GETDATE(), @Iva, @Total,@Usuario)";
 
             SqlCommand cmd = new SqlCommand(Cobranza, conexion);
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.AddWithValue("@Iva", Iva);
             cmd.Parameters.AddWithValue("@Total", total);
+            cmd.Parameters.AddWithValue("@Usuario", LoginCache.idUsuario);
+
             cmd.ExecuteNonQuery();
 
 
@@ -279,7 +296,8 @@ namespace VentasNuevo
 
                 }
                 conexion.Close();
-                Application.Restart();
+                dataGridView1.Rows.Clear();
+               // Application.Restart();
             }
         }
 
@@ -340,27 +358,6 @@ namespace VentasNuevo
                     //  string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                     valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
                     RecargarDGV();
-                    /* string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-                     string selPro = "Select Producto, nombre, Contenido, Precio, Stock from Productos Where idCategoria = @id";
-
-                     conexion.Open();
-
-                     using (SqlCommand cmd = new SqlCommand(selPro, conexion))
-                     {
-                         DataGridViewRow fila = new DataGridViewRow();
-                         fila.CreateCells(dgvProductos);
-                         cmd.CommandType = CommandType.Text;
-                         cmd.Parameters.AddWithValue("@id", valorCelda);
-                         cmd.ExecuteNonQuery();
-                         SqlDataAdapter da = new SqlDataAdapter(cmd);
-                         DataTable dt = new DataTable();
-                         da.Fill(dt);
-                         dgvProductos.DataSource = dt;
-
-                         dgvProductos.CurrentCell.Selected = false;
-
-                         conexion.Close();
-                     }*/
                 }
                 catch (Exception ex)
                 {
@@ -434,7 +431,7 @@ namespace VentasNuevo
             }
         }
 
-        private void cargarProductos()
+        private void RefrescarDGVProductos()
         {
 
         }
@@ -763,6 +760,43 @@ namespace VentasNuevo
                 txtDescCat.Text = Convert.ToString(dr.GetInt32(0));
             }
             conexion.Close();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnTerminarCorte_Click(object sender, EventArgs e)
+        {
+            actEstado();
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+            
+        }
+        private void actEstado()
+        {
+            string act = "UPDATE Usuario SET Estado = 0, FechaEnt = NULL WHERE nomUsuario = @nomUser";
+
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(act, conexion);
+            cmd.Parameters.AddWithValue("@nomUser", lblLogUser.Text);
+            SqlDataReader dr = cmd.ExecuteReader();
+            conexion.Close();
+        }
+        private void lblUsuario()
+        {
+            lblLogUser.Text = LoginCache.nomUsuario;
+            lblNombreDelUsuario.Text = "Bienvenido "+LoginCache.nombre + " " + LoginCache.Apepa + " " + LoginCache.ApeMat;
+            lblUsuCort.Text = LoginCache.nombre + " " + LoginCache.Apepa + " " + LoginCache.ApeMat;
+        }
+
+        private void Hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
+            lblFecha.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            //lblFecha.Text = DateTime.Now.ToLongDateString();
         }
     }
 }

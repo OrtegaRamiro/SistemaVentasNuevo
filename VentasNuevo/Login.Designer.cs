@@ -29,11 +29,13 @@ namespace VentasNuevo
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContra = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.TimerInicio = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnLogin
@@ -78,6 +80,10 @@ namespace VentasNuevo
             this.label2.TabIndex = 4;
             this.label2.Text = "Contraseña:";
             // 
+            // TimerInicio
+            // 
+            this.TimerInicio.Enabled = true;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -90,6 +96,7 @@ namespace VentasNuevo
             this.Controls.Add(this.btnLogin);
             this.Name = "Login";
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -103,5 +110,6 @@ namespace VentasNuevo
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtContra;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Timer TimerInicio;
     }
 }

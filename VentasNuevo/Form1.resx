@@ -117,6 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="clmCodigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmProducto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmPrecio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmCantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmCodigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmProducto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmPrecio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmCantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmIdDesc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmProductos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmConDesc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmPreDesc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="clmStoDesc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="clmIdDesc.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -138,28 +177,10 @@
   <metadata name="clmDepartamentos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmCodigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="clmIDCategoria.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmProducto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clmPrecio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clmCantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clmCodigo.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clmProducto.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clmPrecio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="clmCantidad.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="clmDepartamentos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="clmAnio.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -425,28 +446,37 @@
   </data>
   <data name="btnCorte.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        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
+        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
 </value>
   </data>
-  <metadata name="clmIDCategoria.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="clmCod.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="clmDepartamentos.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="clmPro.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="clmCant.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="ClmTot.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Hora.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>181, 17</value>
   </metadata>
 </root>
