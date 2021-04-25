@@ -20,12 +20,18 @@ namespace VentasNuevo
         SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-74BBU83\\SQLEXPRESS ; Initial Catalog=VENTAS ; integrated security = true");
         double TotalC = 0;
         string valorCelda2;
+        string valorCelda;
         public Form1()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+            cargarItems();
+        }
+
+        private void cargarItems()
         {
             centrarColumnas(dataGridView1);
             centrarColumnas(dataGridView2);
@@ -40,6 +46,9 @@ namespace VentasNuevo
             Prueba();
             cargardgvRepor();
             GraficaReportes();
+            CombCategorias();
+            comboBox1.SelectedIndex = 0;
+            cbCategoria.SelectedIndex = 0;
         }
 
         /*-------------------------ALTERNAR COLORES EN DATAGRIDVIEWS-------------------------*/
@@ -74,6 +83,14 @@ namespace VentasNuevo
         private void btnReporte_Click(object sender, EventArgs e)
         {
             tcTodo.SelectedIndex = 3;
+            dgvReportes.CurrentCell.Selected = false;
+            dgvReportes.ClearSelection();
+        }
+
+        /*-------------------------BOTON DE CORTE-------------------------*/
+        private void btnCorte_Click(object sender, EventArgs e)
+        {
+            tcTodo.SelectedIndex = 4;
         }
 
         /*-------------------------BOTON QUE AGREGA COSAS QUE SE COMPRARAN-------------------------*/
@@ -309,73 +326,120 @@ namespace VentasNuevo
         /*-------------------------EVENTO AL HACER CLICK EN CUALQUIER FILA DE LA TABLA QUE MUESTRA CATEGORIAS DE PRODUCTOS-------------------------*/
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            try
+            if (e.RowIndex == -1)
             {
-                limpiarTXBox();
-                //  string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-                string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
-                string selPro = "Select Producto, nombre, Contenido, Precio, Stock from Productos Where idCategoria = @id";
-
-                conexion.Open();
-
-                using (SqlCommand cmd = new SqlCommand(selPro, conexion))
-                {
-                    DataGridViewRow fila = new DataGridViewRow();
-                    fila.CreateCells(dgvProductos);
-                    cmd.CommandType = CommandType.Text;
-                    cmd.Parameters.AddWithValue("@id", valorCelda);
-                    cmd.ExecuteNonQuery();
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dgvProductos.DataSource = dt;
-
-                    dgvProductos.CurrentCell.Selected = false;
-                    
-
-                    conexion.Close();
-                }
+                return;
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
+            else { 
+
+                try
+                {
+                    limpiarTXBox();
+                    comboBox1.SelectedIndex = 0;
+                   
+                    //  string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                    valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    RecargarDGV();
+                    /* string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+                     string selPro = "Select Producto, nombre, Contenido, Precio, Stock from Productos Where idCategoria = @id";
+
+                     conexion.Open();
+
+                     using (SqlCommand cmd = new SqlCommand(selPro, conexion))
+                     {
+                         DataGridViewRow fila = new DataGridViewRow();
+                         fila.CreateCells(dgvProductos);
+                         cmd.CommandType = CommandType.Text;
+                         cmd.Parameters.AddWithValue("@id", valorCelda);
+                         cmd.ExecuteNonQuery();
+                         SqlDataAdapter da = new SqlDataAdapter(cmd);
+                         DataTable dt = new DataTable();
+                         da.Fill(dt);
+                         dgvProductos.DataSource = dt;
+
+                         dgvProductos.CurrentCell.Selected = false;
+
+                         conexion.Close();
+                     }*/
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
 
-        /*-------------------------EVENTO AL HACER CLICK EN CUALQUIER FILA DE LA TABLA QUE MUESTRA LOS PRODUCTOS EN BASE A LA CATEGORIA-------------------------*/
-        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void RecargarDGV()
         {
-            try
+            conexion.Open();
+            string selPro = "Select Producto, nombre, Contenido, Precio, Stock from Productos Where idCategoria = @id";
+           // string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+            using (SqlCommand cmd = new SqlCommand(selPro, conexion))
             {
-                valorCelda2 = dgvProductos.Rows[e.RowIndex].Cells[0].Value.ToString();
-                string selPro = "Select Producto, nombre, idCategoria, Contenido, PrecioCompra, Precio, Stock from Productos Where Producto = @id";
 
-                conexion.Open();
-                SqlCommand comando = new SqlCommand(selPro, conexion);
-                comando.Parameters.AddWithValue("@id", valorCelda2);
-                SqlDataReader registro = comando.ExecuteReader();
+                DataGridViewRow fila = new DataGridViewRow();
+                fila.CreateCells(dgvProductos);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@id", valorCelda);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvProductos.DataSource = dt;
 
-                if (registro.Read())
-                {
-                    txtDescID.Text = registro["Producto"].ToString();
-                    txtProNom.Text = registro["nombre"].ToString();
-                    txtDescCat.Text = registro["idCategoria"].ToString();
-                    txtProCont.Text = registro["Contenido"].ToString();
-                    txtDesCant.Text = registro["Stock"].ToString();
-                    txtDescPreCom.Text = registro["PrecioCompra"].ToString();
-                    txtDescPreVen.Text = registro["Precio"].ToString();
-
-                }
+                dgvProductos.CurrentCell.Selected = false;
 
                 conexion.Close();
             }
-
-            catch (Exception ex)
+        }
+        /*-------------------------EVENTO AL HACER CLICK EN CUALQUIER FILA DE LA TABLA QUE MUESTRA LOS PRODUCTOS EN BASE A LA CATEGORIA-------------------------*/
+        private void dgvProductos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex == -1)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                return;
+            }
+            else { 
+                try
+                {
+                    comboBox1.SelectedIndex = 0;
+                    valorCelda2 = dgvProductos.Rows[e.RowIndex].Cells[0].Value.ToString();
+                    string selPro = "Select Producto, nombre, idCategoria, Contenido, PrecioCompra, Precio, Stock from Productos Where Producto = @id";
+
+                    conexion.Open();
+                    SqlCommand comando = new SqlCommand(selPro, conexion);
+                    comando.Parameters.AddWithValue("@id", valorCelda2);
+                    SqlDataReader registro = comando.ExecuteReader();
+
+                    if (registro.Read())
+                    {
+                        txtDescID.Text = registro["Producto"].ToString();
+                        txtProNom.Text = registro["nombre"].ToString();
+                        txtDescCat.Text = registro["idCategoria"].ToString();
+                        txtProCont.Text = registro["Contenido"].ToString();
+                        txtDesCant.Text = registro["Stock"].ToString();
+                        txtDescPreCom.Text = registro["PrecioCompra"].ToString();
+                        txtDescPreVen.Text = registro["Precio"].ToString();
+
+                    }
+
+                    conexion.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
+
+        private void cargarProductos()
+        {
+
+        }
+
+        /*-------------------------RESTRINGIR CARCATERES EN TEXTBOX-------------------------*/
 
         private void restringirTBox(KeyPressEventArgs e)
         {
@@ -393,25 +457,28 @@ namespace VentasNuevo
             }
         }
 
+        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
+
         private void tbProducto_KeyPress(object sender, KeyPressEventArgs e)
         {
             restringirTBox(e);
         }
 
+        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
         private void tbCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             restringirTBox(e);
         }
 
+        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
         private void tbMosPago_KeyPress(object sender, KeyPressEventArgs e)
         {
             restringirTBox(e);
         }
 
+        /*-------------------------CENTRAR COLUMNAS DE DATAGRIDVIEWS-----------------------*/
         private void centrarColumnas(DataGridView dgv)
         {
-            /*dgv.Columns[0].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgv.Columns[1].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;*/
             foreach(DataGridViewColumn col in dgv.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -420,6 +487,7 @@ namespace VentasNuevo
 
         }
 
+        /*-------------------------ELIMINAR PRIMERA COLUMNA DE DATAGRIDVIEW ------------------------*/
         private void QuitarColumnaUno()
         {
             dataGridView1.RowHeadersVisible = false;
@@ -428,6 +496,7 @@ namespace VentasNuevo
             dgvReportes.RowHeadersVisible = false;
         }
 
+        /*-------------------------LIMPIAR TEXTBOX EN VENTAS------------------------*/
         private void limpiarTXBox()
         {
             txtProNom.Text = "";
@@ -448,6 +517,7 @@ namespace VentasNuevo
 
         }
 
+        /*-------------------------OBTENCION DE 5 PRODUCTOS MAS VENDIDOS------------------------*/
         private void VentasTotalesGRA()
         {
             string VenTotales = "Select TOP 5 Nombre, Contenido, VentasTotales FROM Productos ORDER BY VentasTotales DESC";
@@ -468,6 +538,7 @@ namespace VentasNuevo
             }
         }
 
+        /*-------------------------GRAFICA VENTAS MENSUALES------------------------*/
         private void VentasTotalesCAT()
         {
             conexion.Open();
@@ -485,6 +556,8 @@ namespace VentasNuevo
             chart2.Series[0].Points.DataBindXY(Mes, Total);
             conexion.Close();
         }
+
+        /*-------------------------GRAFICA QUE MUESTRA VENTAS TOTALES POR CATEGORIA------------------------*/
         private void Prueba()
         {
             conexion.Open();
@@ -504,6 +577,8 @@ namespace VentasNuevo
             conexion.Close();
         }
 
+
+        /*-------------------------OPCIONES DE COMBOBOX------------------------*/
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(comboBox1.SelectedIndex == 0)
@@ -514,10 +589,13 @@ namespace VentasNuevo
             {
                 habTextBox();
                 int id = 0;
-                id = valorIDProducto(id) + 1;
-                txtDescID.Text = id.ToString();
+                /* id = valorIDProducto(id) + 1;
+                 txtDescID.Text = id.ToString();*/
+                txtDescID.Text = valorIDProducto(id).ToString();
             }
         }
+
+        /*-------------------------HABILITAR ESCRITURA EN TEXTBOXS------------------------*/
         private void habTextBox()
         {
             limpTXB2();
@@ -528,8 +606,10 @@ namespace VentasNuevo
             txtDesCant.ReadOnly = false;
             txtDescPreCom.ReadOnly = false;
             txtDescPreVen.ReadOnly = false;
-            txtDescCat.ReadOnly = false;
+            cbCategoria.Enabled = true;
         }
+
+        /*-------------------------DESHABILITAR ESCRITURA EN TEXTBOXS------------------------*/
         private void DeshabTextBox()
         {
 
@@ -541,8 +621,10 @@ namespace VentasNuevo
             txtDescPreVen.ReadOnly = true;
             txtDescCat.ReadOnly = true;
             btnDescAgregar.Enabled = false;
+            cbCategoria.Enabled = false;
         }
 
+        /*-------------------------LIMPIAR TEXTBOXS EN APARTADO DE PRODUCTOS------------------------*/
         private void limpTXB2()
         {
             txtProNom.Text = "";
@@ -554,29 +636,62 @@ namespace VentasNuevo
             txtDescID.Text = "";
         }
 
+        /*-------------------------AGREGA NUEVO PRODUCTO EN EL APARTADO DE PRODUCTOS------------------------*/
         private void btnDescAgregar_Click(object sender, EventArgs e)
         {
-            String Insertar = "INSERT INTO Productos (Producto, idCategoria, Nombre, PrecioCompra, Precio, Contenido, VentasTotales, Stock) VALUES (@idProducto,@idCategoria,@nombre,@PrecioCompra,@Precio,@Contenido,@VentasTotales,@Stock)";
-            int id = 0;
-            id = valorIDProducto(id);
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand(Insertar, conexion);
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.AddWithValue("@idProducto", id+1);
-            cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(txtDescCat.Text));
-            cmd.Parameters.AddWithValue("@nombre", txtProNom.Text);
-            cmd.Parameters.AddWithValue("@PrecioCompra", float.Parse(txtDescPreCom.Text));
-            cmd.Parameters.AddWithValue("@Precio", float.Parse(txtDescPreVen.Text));
-            cmd.Parameters.AddWithValue("@Contenido", txtProCont.Text);
-            cmd.Parameters.AddWithValue("@VentasTotales", 0);
-            cmd.Parameters.AddWithValue("@Stock", Convert.ToInt32(txtDesCant.Text));
-            cmd.ExecuteNonQuery();
-            conexion.Close();
-            limpTXB2();
-            MessageBox.Show("PRODUCTO AGREGADO CORRECTAMENTE");
+            if (string.IsNullOrEmpty(txtDescID.Text) || string.IsNullOrEmpty(txtProNom.Text) || string.IsNullOrEmpty(txtDescCat.Text) || string.IsNullOrEmpty(txtProCont.Text) || string.IsNullOrEmpty(txtDesCant.Text) || string.IsNullOrEmpty(txtDescPreCom.Text) || string.IsNullOrEmpty(txtDescPreVen.Text))
+            {
+                MessageBox.Show("Llene todos los campos necesarios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                String Insertar = "INSERT INTO Productos (Producto, idCategoria, Nombre, PrecioCompra, Precio, Contenido, VentasTotales, Stock) VALUES (@idProducto,@idCategoria,@nombre,@PrecioCompra,@Precio,@Contenido,@VentasTotales,@Stock)";
+                int id = 0;
+                id = valorIDProducto(id);
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(Insertar, conexion);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@idProducto", id);
+                cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(txtDescCat.Text));
+                cmd.Parameters.AddWithValue("@nombre", txtProNom.Text);
+                cmd.Parameters.AddWithValue("@PrecioCompra", float.Parse(txtDescPreCom.Text));
+                cmd.Parameters.AddWithValue("@Precio", float.Parse(txtDescPreVen.Text));
+                cmd.Parameters.AddWithValue("@Contenido", txtProCont.Text);
+                cmd.Parameters.AddWithValue("@VentasTotales", 0);
+                cmd.Parameters.AddWithValue("@Stock", Convert.ToInt32(txtDesCant.Text));
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+                limpTXB2();
+                MessageBox.Show("PRODUCTO AGREGADO CORRECTAMENTE");
+                RecargarDGV();
 
+                id +=1;
+                txtDescID.Text = id.ToString();
+            }
         }
-        private int valorIDProducto(int val1)
+        private void CombCategorias()
+        {
+            try
+            {
+                string cat = "SELECT nombre FROM Categoria";
+                conexion.Open();
+
+                SqlCommand cmd = new SqlCommand(cat, conexion);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cbCategoria.Items.Add(dr["nombre"].ToString());
+                }
+                conexion.Close();
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(""+ex.ToString());
+            }
+        }
+
+        /*-------------------------MODIFICACION ID DE LA TABLA DE PRODUCTOS------------------------*/
+        private int valorIDProducto(int val1=0)
         {
             conexion.Open();
             String query = "SELECT TOP 1 Producto FROM Productos ORDER BY Producto DESC";
@@ -587,15 +702,13 @@ namespace VentasNuevo
                 val1 = Convert.ToInt32(valor);
             }
             conexion.Close();
-            return val1;
+            return val1+1;
         }
+
+        /*-------------------------MUESTRA EL TOTAL DE VENTAS AL MES EN DATAGRIDVIEW------------------------*/
         private void cargardgvRepor()
         {
-            string reporte = "SELECT Year(Fecha) as Año, DATENAME(MONTH, DATEADD(MONTH, MONTH(Fecha),-1)) as Mes, sum(Total) AS Total FROM Cobranza GROUP BY YEAR(Fecha), MONTH(Fecha) ORDER BY año, Mes DESC";
-
-
-          //  String com = "Select idcategoria, nombre from Categoria";
-
+            string reporte = "SELECT YEAR(Fecha) AS año, DATENAME(MONTH, DATEADD(MONTH, MONTH(Fecha),-1)) AS Mes, sum(Total) AS Total FROM Cobranza WHERE YEAR(FECHA) = YEAR(GETDATE()) GROUP BY YEAR(Fecha), MONTH(Fecha) ORDER BY  YEAR(Fecha), MONTH(FECHA) ASC;";
 
             conexion.Open();
             using (SqlCommand cmd = new SqlCommand(reporte, conexion))
@@ -607,14 +720,15 @@ namespace VentasNuevo
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dgvReportes.DataSource = dt;
-
-            conexion.Close();
+                conexion.Close();
             }
         }
+
+        /*-------------------------TOTAL DE VENTAS AL MES EN FORMATO GRAFICO------------------------*/
         private void GraficaReportes()
         {
             conexion.Open();
-            string VenTotales = "SELECT DATENAME(MONTH, DATEADD(MONTH, MONTH(Fecha),-1)) as Mes, sum(Total) AS Total FROM Cobranza WHERE YEAR(FECHA) = YEAR(GETDATE()) GROUP BY YEAR(Fecha), MONTH(Fecha) ORDER BY  Mes DESC;";
+            string VenTotales = "SELECT DATENAME(MONTH, DATEADD(MONTH, MONTH(Fecha),-1)) as Mes, sum(Total) AS Total FROM Cobranza WHERE YEAR(FECHA) = YEAR(GETDATE()) GROUP BY YEAR(Fecha), MONTH(Fecha) ORDER BY  YEAR(Fecha), MONTH(FECHA) ASC;";
             ArrayList Mes = new ArrayList();
             ArrayList Total = new ArrayList();
 
@@ -626,6 +740,28 @@ namespace VentasNuevo
                 Total.Add(dr.GetDecimal(1));
             }
             chartReport.Series[0].Points.DataBindXY(Mes, Total);
+            conexion.Close();
+        }
+
+        private void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbCategoria.SelectedIndex == 0)
+            {
+                txtDescCat.Text = "";
+            }
+            int seleccionado = cbCategoria.SelectedIndex;
+            //string seleccionado = cbCategoria.SelectedIndex.ToString();
+            string nombre = "SELECT idCategoria FROM Categoria WHERE idCategoria = @Categoria";
+
+
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(nombre, conexion);
+            cmd.Parameters.AddWithValue("@Categoria",seleccionado);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                txtDescCat.Text = Convert.ToString(dr.GetInt32(0));
+            }
             conexion.Close();
         }
     }

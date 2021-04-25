@@ -18,7 +18,6 @@ namespace VentasNuevo
             try
             {
                 conexion.Open();
-                Console.WriteLine("Conexion Abierta");
             }
             catch (Exception ex)
             {
