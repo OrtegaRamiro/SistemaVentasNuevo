@@ -30,21 +30,21 @@ namespace VentasNuevo
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcTodo = new System.Windows.Forms.TabControl();
             this.tcVentas = new System.Windows.Forms.TabPage();
             this.btnAgregar = new System.Windows.Forms.Button();
@@ -108,36 +108,36 @@ namespace VentasNuevo
             this.clmMes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmVentas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.lblUsuCort = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTot = new System.Windows.Forms.TextBox();
+            this.btnTerminarCorte = new System.Windows.Forms.Button();
+            this.dgvCorte = new System.Windows.Forms.DataGridView();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtVenCort = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblInfoCorte = new System.Windows.Forms.Label();
+            this.lblObservaciones = new System.Windows.Forms.Label();
+            this.lblVentas = new System.Windows.Forms.Label();
             this.btnVentas = new System.Windows.Forms.Button();
             this.btnProductos = new System.Windows.Forms.Button();
             this.btnAdmin = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.btnReporte = new System.Windows.Forms.Button();
             this.btnCorte = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.btnTerminarCorte = new System.Windows.Forms.Button();
-            this.txtTot = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.PanelUsuario = new System.Windows.Forms.Panel();
+            this.lblFecha = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
+            this.lblNombreDelUsuario = new System.Windows.Forms.Label();
+            this.lblLogUser = new System.Windows.Forms.Label();
+            this.Hora = new System.Windows.Forms.Timer(this.components);
             this.clmCod = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmPro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmCant = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmTot = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblUsuCort = new System.Windows.Forms.Label();
-            this.PanelUsuario = new System.Windows.Forms.Panel();
-            this.lblLogUser = new System.Windows.Forms.Label();
-            this.lblNombreDelUsuario = new System.Windows.Forms.Label();
-            this.lblVentas = new System.Windows.Forms.Label();
-            this.lblObservaciones = new System.Windows.Forms.Label();
-            this.lblInfoCorte = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.lblEnCaja = new System.Windows.Forms.Label();
-            this.txtVenCort = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.lblHora = new System.Windows.Forms.Label();
-            this.Hora = new System.Windows.Forms.Timer(this.components);
-            this.lblFecha = new System.Windows.Forms.Label();
+            this.txtCaja = new System.Windows.Forms.TextBox();
             this.tcTodo.SuspendLayout();
             this.tcVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -153,8 +153,8 @@ namespace VentasNuevo
             ((System.ComponentModel.ISupportInitialize)(this.chartReport)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportes)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCorte)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.PanelUsuario.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -735,22 +735,22 @@ namespace VentasNuevo
             this.chart3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart3.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea5.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
-            chartArea5.BorderWidth = 2;
-            chartArea5.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea5);
-            legend5.BorderColor = System.Drawing.Color.Black;
-            legend5.Name = "Legend1";
-            this.chart3.Legends.Add(legend5);
+            chartArea1.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDot;
+            chartArea1.BorderWidth = 2;
+            chartArea1.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea1);
+            legend1.BorderColor = System.Drawing.Color.Black;
+            legend1.Name = "Legend1";
+            this.chart3.Legends.Add(legend1);
             this.chart3.Location = new System.Drawing.Point(553, 252);
             this.chart3.Name = "chart3";
-            series4.BorderColor = System.Drawing.Color.Black;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            series4.YValuesPerPoint = 4;
-            this.chart3.Series.Add(series4);
+            series1.BorderColor = System.Drawing.Color.Black;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 4;
+            this.chart3.Series.Add(series1);
             this.chart3.Size = new System.Drawing.Size(602, 229);
             this.chart3.TabIndex = 2;
             this.chart3.Text = "chart3";
@@ -761,22 +761,22 @@ namespace VentasNuevo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chart2.BorderlineColor = System.Drawing.Color.Black;
             this.chart2.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea6.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
-            chartArea6.BorderWidth = 2;
-            chartArea6.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea6);
-            legend6.BorderColor = System.Drawing.Color.Black;
-            legend6.Name = "Legend1";
-            this.chart2.Legends.Add(legend6);
+            chartArea2.BorderDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.DashDotDot;
+            chartArea2.BorderWidth = 2;
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.BorderColor = System.Drawing.Color.Black;
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
             this.chart2.Location = new System.Drawing.Point(553, 6);
             this.chart2.Name = "chart2";
-            series5.BorderColor = System.Drawing.Color.Black;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            series5.YValuesPerPoint = 4;
-            this.chart2.Series.Add(series5);
+            series2.BorderColor = System.Drawing.Color.Black;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            series2.YValuesPerPoint = 4;
+            this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(602, 240);
             this.chart2.TabIndex = 1;
             this.chart2.Text = "chart2";
@@ -785,11 +785,11 @@ namespace VentasNuevo
             // 
             this.chart1.BorderlineColor = System.Drawing.Color.Black;
             this.chart1.BorderSkin.SkinStyle = System.Windows.Forms.DataVisualization.Charting.BorderSkinStyle.Sunken;
-            chartArea7.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea7);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Dock = System.Windows.Forms.DockStyle.Left;
-            legend7.Name = "Legend1";
-            this.chart1.Legends.Add(legend7);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
             this.chart1.Size = new System.Drawing.Size(550, 475);
@@ -816,25 +816,25 @@ namespace VentasNuevo
             this.chartReport.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.LeftRight;
             this.chartReport.BackSecondaryColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.chartReport.BorderlineColor = System.Drawing.Color.Transparent;
-            chartArea8.Name = "ChartArea1";
-            this.chartReport.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chartReport.Legends.Add(legend8);
+            chartArea4.Name = "ChartArea1";
+            this.chartReport.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartReport.Legends.Add(legend4);
             this.chartReport.Location = new System.Drawing.Point(652, 6);
             this.chartReport.Name = "chartReport";
-            series6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            series6.BorderWidth = 5;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.Color = System.Drawing.Color.Red;
-            series6.LabelBorderWidth = 10;
-            series6.Legend = "Legend1";
-            series6.MarkerBorderColor = System.Drawing.Color.Black;
-            series6.MarkerBorderWidth = 5;
-            series6.MarkerColor = System.Drawing.Color.Black;
-            series6.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series6.Name = "Comportamiento";
-            this.chartReport.Series.Add(series6);
+            series3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            series3.BorderWidth = 5;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Red;
+            series3.LabelBorderWidth = 10;
+            series3.Legend = "Legend1";
+            series3.MarkerBorderColor = System.Drawing.Color.Black;
+            series3.MarkerBorderWidth = 5;
+            series3.MarkerColor = System.Drawing.Color.Black;
+            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series3.Name = "Comportamiento";
+            this.chartReport.Series.Add(series3);
             this.chartReport.Size = new System.Drawing.Size(498, 469);
             this.chartReport.TabIndex = 1;
             this.chartReport.Text = "chart4";
@@ -856,14 +856,14 @@ namespace VentasNuevo
             this.clmAnio,
             this.clmMes,
             this.clmVentas});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvReportes.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvReportes.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReportes.Enabled = false;
             this.dgvReportes.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dgvReportes.Location = new System.Drawing.Point(6, 6);
@@ -899,7 +899,7 @@ namespace VentasNuevo
             this.tabPage4.Controls.Add(this.textBox2);
             this.tabPage4.Controls.Add(this.txtTot);
             this.tabPage4.Controls.Add(this.btnTerminarCorte);
-            this.tabPage4.Controls.Add(this.dataGridView3);
+            this.tabPage4.Controls.Add(this.dgvCorte);
             this.tabPage4.Controls.Add(this.panel2);
             this.tabPage4.Location = new System.Drawing.Point(4, 4);
             this.tabPage4.Name = "tabPage4";
@@ -908,6 +908,134 @@ namespace VentasNuevo
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Corte";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // lblUsuCort
+            // 
+            this.lblUsuCort.AutoSize = true;
+            this.lblUsuCort.Location = new System.Drawing.Point(928, 275);
+            this.lblUsuCort.Name = "lblUsuCort";
+            this.lblUsuCort.Size = new System.Drawing.Size(65, 13);
+            this.lblUsuCort.TabIndex = 5;
+            this.lblUsuCort.Text = "NomUsuario";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(732, 446);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 4;
+            // 
+            // txtTot
+            // 
+            this.txtTot.Location = new System.Drawing.Point(403, 446);
+            this.txtTot.Name = "txtTot";
+            this.txtTot.Size = new System.Drawing.Size(331, 20);
+            this.txtTot.TabIndex = 3;
+            this.txtTot.Text = "Total:";
+            // 
+            // btnTerminarCorte
+            // 
+            this.btnTerminarCorte.Location = new System.Drawing.Point(931, 401);
+            this.btnTerminarCorte.Name = "btnTerminarCorte";
+            this.btnTerminarCorte.Size = new System.Drawing.Size(85, 38);
+            this.btnTerminarCorte.TabIndex = 2;
+            this.btnTerminarCorte.Text = "Terminar Corte";
+            this.btnTerminarCorte.UseVisualStyleBackColor = true;
+            this.btnTerminarCorte.Click += new System.EventHandler(this.btnTerminarCorte_Click);
+            // 
+            // dgvCorte
+            // 
+            this.dgvCorte.AllowUserToAddRows = false;
+            this.dgvCorte.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dgvCorte.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvCorte.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCorte.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvCorte.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCorte.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clmCod,
+            this.clmPro,
+            this.clmCant,
+            this.ClmTot});
+            this.dgvCorte.Location = new System.Drawing.Point(402, 3);
+            this.dgvCorte.Name = "dgvCorte";
+            this.dgvCorte.ReadOnly = true;
+            this.dgvCorte.RowHeadersVisible = false;
+            this.dgvCorte.Size = new System.Drawing.Size(430, 436);
+            this.dgvCorte.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.textBox4);
+            this.panel2.Controls.Add(this.txtCaja);
+            this.panel2.Controls.Add(this.txtVenCort);
+            this.panel2.Controls.Add(this.lblEnCaja);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.lblInfoCorte);
+            this.panel2.Controls.Add(this.lblObservaciones);
+            this.panel2.Controls.Add(this.lblVentas);
+            this.panel2.Location = new System.Drawing.Point(8, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(388, 475);
+            this.panel2.TabIndex = 0;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(113, 202);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 7;
+            // 
+            // txtVenCort
+            // 
+            this.txtVenCort.Location = new System.Drawing.Point(79, 73);
+            this.txtVenCort.Name = "txtVenCort";
+            this.txtVenCort.ReadOnly = true;
+            this.txtVenCort.Size = new System.Drawing.Size(100, 20);
+            this.txtVenCort.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 450);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "label5";
+            // 
+            // lblInfoCorte
+            // 
+            this.lblInfoCorte.AutoSize = true;
+            this.lblInfoCorte.Location = new System.Drawing.Point(66, 12);
+            this.lblInfoCorte.Name = "lblInfoCorte";
+            this.lblInfoCorte.Size = new System.Drawing.Size(146, 13);
+            this.lblInfoCorte.TabIndex = 2;
+            this.lblInfoCorte.Text = "INFORMACIÓN DEL CORTE";
+            // 
+            // lblObservaciones
+            // 
+            this.lblObservaciones.AutoSize = true;
+            this.lblObservaciones.Location = new System.Drawing.Point(25, 202);
+            this.lblObservaciones.Name = "lblObservaciones";
+            this.lblObservaciones.Size = new System.Drawing.Size(81, 13);
+            this.lblObservaciones.TabIndex = 1;
+            this.lblObservaciones.Text = "Observaciones:";
+            // 
+            // lblVentas
+            // 
+            this.lblVentas.AutoSize = true;
+            this.lblVentas.Location = new System.Drawing.Point(29, 73);
+            this.lblVentas.Name = "lblVentas";
+            this.lblVentas.Size = new System.Drawing.Size(43, 13);
+            this.lblVentas.TabIndex = 0;
+            this.lblVentas.Text = "Ventas:";
             // 
             // btnVentas
             // 
@@ -969,107 +1097,6 @@ namespace VentasNuevo
             this.btnCorte.UseVisualStyleBackColor = true;
             this.btnCorte.Click += new System.EventHandler(this.btnCorte_Click);
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.textBox4);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.txtVenCort);
-            this.panel2.Controls.Add(this.lblEnCaja);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.lblInfoCorte);
-            this.panel2.Controls.Add(this.lblObservaciones);
-            this.panel2.Controls.Add(this.lblVentas);
-            this.panel2.Location = new System.Drawing.Point(8, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(388, 475);
-            this.panel2.TabIndex = 0;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.AllowUserToAddRows = false;
-            this.dataGridView3.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridView3.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView3.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmCod,
-            this.clmPro,
-            this.clmCant,
-            this.ClmTot});
-            this.dataGridView3.Location = new System.Drawing.Point(402, 3);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.ReadOnly = true;
-            this.dataGridView3.RowHeadersVisible = false;
-            this.dataGridView3.Size = new System.Drawing.Size(430, 436);
-            this.dataGridView3.TabIndex = 1;
-            // 
-            // btnTerminarCorte
-            // 
-            this.btnTerminarCorte.Location = new System.Drawing.Point(931, 401);
-            this.btnTerminarCorte.Name = "btnTerminarCorte";
-            this.btnTerminarCorte.Size = new System.Drawing.Size(85, 38);
-            this.btnTerminarCorte.TabIndex = 2;
-            this.btnTerminarCorte.Text = "Terminar Corte";
-            this.btnTerminarCorte.UseVisualStyleBackColor = true;
-            this.btnTerminarCorte.Click += new System.EventHandler(this.btnTerminarCorte_Click);
-            // 
-            // txtTot
-            // 
-            this.txtTot.Location = new System.Drawing.Point(403, 446);
-            this.txtTot.Name = "txtTot";
-            this.txtTot.Size = new System.Drawing.Size(331, 20);
-            this.txtTot.TabIndex = 3;
-            this.txtTot.Text = "Total:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(732, 446);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
-            // 
-            // clmCod
-            // 
-            this.clmCod.HeaderText = "Código";
-            this.clmCod.Name = "clmCod";
-            this.clmCod.ReadOnly = true;
-            // 
-            // clmPro
-            // 
-            this.clmPro.HeaderText = "Producto";
-            this.clmPro.Name = "clmPro";
-            this.clmPro.ReadOnly = true;
-            // 
-            // clmCant
-            // 
-            this.clmCant.HeaderText = "Cantidad";
-            this.clmCant.Name = "clmCant";
-            this.clmCant.ReadOnly = true;
-            // 
-            // ClmTot
-            // 
-            this.ClmTot.HeaderText = "Total";
-            this.ClmTot.Name = "ClmTot";
-            this.ClmTot.ReadOnly = true;
-            // 
-            // lblUsuCort
-            // 
-            this.lblUsuCort.AutoSize = true;
-            this.lblUsuCort.Location = new System.Drawing.Point(928, 275);
-            this.lblUsuCort.Name = "lblUsuCort";
-            this.lblUsuCort.Size = new System.Drawing.Size(65, 13);
-            this.lblUsuCort.TabIndex = 5;
-            this.lblUsuCort.Text = "NomUsuario";
-            // 
             // PanelUsuario
             // 
             this.PanelUsuario.Controls.Add(this.lblFecha);
@@ -1081,90 +1108,14 @@ namespace VentasNuevo
             this.PanelUsuario.Size = new System.Drawing.Size(426, 100);
             this.PanelUsuario.TabIndex = 6;
             // 
-            // lblLogUser
+            // lblFecha
             // 
-            this.lblLogUser.AutoSize = true;
-            this.lblLogUser.Location = new System.Drawing.Point(4, 44);
-            this.lblLogUser.Name = "lblLogUser";
-            this.lblLogUser.Size = new System.Drawing.Size(43, 13);
-            this.lblLogUser.TabIndex = 0;
-            this.lblLogUser.Text = "Usuario";
-            // 
-            // lblNombreDelUsuario
-            // 
-            this.lblNombreDelUsuario.AutoSize = true;
-            this.lblNombreDelUsuario.Location = new System.Drawing.Point(4, 11);
-            this.lblNombreDelUsuario.Name = "lblNombreDelUsuario";
-            this.lblNombreDelUsuario.Size = new System.Drawing.Size(44, 13);
-            this.lblNombreDelUsuario.TabIndex = 1;
-            this.lblNombreDelUsuario.Text = "Nombre";
-            // 
-            // lblVentas
-            // 
-            this.lblVentas.AutoSize = true;
-            this.lblVentas.Location = new System.Drawing.Point(29, 73);
-            this.lblVentas.Name = "lblVentas";
-            this.lblVentas.Size = new System.Drawing.Size(43, 13);
-            this.lblVentas.TabIndex = 0;
-            this.lblVentas.Text = "Ventas:";
-            // 
-            // lblObservaciones
-            // 
-            this.lblObservaciones.AutoSize = true;
-            this.lblObservaciones.Location = new System.Drawing.Point(25, 202);
-            this.lblObservaciones.Name = "lblObservaciones";
-            this.lblObservaciones.Size = new System.Drawing.Size(81, 13);
-            this.lblObservaciones.TabIndex = 1;
-            this.lblObservaciones.Text = "Observaciones:";
-            // 
-            // lblInfoCorte
-            // 
-            this.lblInfoCorte.AutoSize = true;
-            this.lblInfoCorte.Location = new System.Drawing.Point(66, 12);
-            this.lblInfoCorte.Name = "lblInfoCorte";
-            this.lblInfoCorte.Size = new System.Drawing.Size(146, 13);
-            this.lblInfoCorte.TabIndex = 2;
-            this.lblInfoCorte.Text = "INFORMACIÓN DEL CORTE";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 450);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "label5";
-            // 
-            // lblEnCaja
-            // 
-            this.lblEnCaja.AutoSize = true;
-            this.lblEnCaja.Location = new System.Drawing.Point(25, 111);
-            this.lblEnCaja.Name = "lblEnCaja";
-            this.lblEnCaja.Size = new System.Drawing.Size(47, 13);
-            this.lblEnCaja.TabIndex = 4;
-            this.lblEnCaja.Text = "En Caja:";
-            // 
-            // txtVenCort
-            // 
-            this.txtVenCort.Location = new System.Drawing.Point(79, 73);
-            this.txtVenCort.Name = "txtVenCort";
-            this.txtVenCort.ReadOnly = true;
-            this.txtVenCort.Size = new System.Drawing.Size(100, 20);
-            this.txtVenCort.TabIndex = 5;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(79, 111);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(113, 202);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
+            this.lblFecha.AutoSize = true;
+            this.lblFecha.Location = new System.Drawing.Point(275, 1);
+            this.lblFecha.Name = "lblFecha";
+            this.lblFecha.Size = new System.Drawing.Size(37, 13);
+            this.lblFecha.TabIndex = 3;
+            this.lblFecha.Text = "Fecha";
             // 
             // lblHora
             // 
@@ -1175,19 +1126,72 @@ namespace VentasNuevo
             this.lblHora.TabIndex = 2;
             this.lblHora.Text = "Hora";
             // 
+            // lblNombreDelUsuario
+            // 
+            this.lblNombreDelUsuario.AutoSize = true;
+            this.lblNombreDelUsuario.Location = new System.Drawing.Point(4, 11);
+            this.lblNombreDelUsuario.Name = "lblNombreDelUsuario";
+            this.lblNombreDelUsuario.Size = new System.Drawing.Size(44, 13);
+            this.lblNombreDelUsuario.TabIndex = 1;
+            this.lblNombreDelUsuario.Text = "Nombre";
+            // 
+            // lblLogUser
+            // 
+            this.lblLogUser.AutoSize = true;
+            this.lblLogUser.Location = new System.Drawing.Point(4, 44);
+            this.lblLogUser.Name = "lblLogUser";
+            this.lblLogUser.Size = new System.Drawing.Size(43, 13);
+            this.lblLogUser.TabIndex = 0;
+            this.lblLogUser.Text = "Usuario";
+            // 
             // Hora
             // 
             this.Hora.Enabled = true;
             this.Hora.Tick += new System.EventHandler(this.Hora_Tick);
             // 
-            // lblFecha
+            // clmCod
             // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(275, 1);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(37, 13);
-            this.lblFecha.TabIndex = 3;
-            this.lblFecha.Text = "Fecha";
+            this.clmCod.DataPropertyName = "Producto";
+            this.clmCod.HeaderText = "Código";
+            this.clmCod.Name = "clmCod";
+            this.clmCod.ReadOnly = true;
+            // 
+            // clmPro
+            // 
+            this.clmPro.DataPropertyName = "Nombre";
+            this.clmPro.HeaderText = "Producto";
+            this.clmPro.Name = "clmPro";
+            this.clmPro.ReadOnly = true;
+            // 
+            // clmCant
+            // 
+            this.clmCant.DataPropertyName = "CantidadTotal";
+            this.clmCant.HeaderText = "Cantidad";
+            this.clmCant.Name = "clmCant";
+            this.clmCant.ReadOnly = true;
+            // 
+            // ClmTot
+            // 
+            this.ClmTot.DataPropertyName = "PRECIOTOTAL";
+            this.ClmTot.HeaderText = "Total";
+            this.ClmTot.Name = "ClmTot";
+            this.ClmTot.ReadOnly = true;
+            // 
+            // lblEnCaja
+            // 
+            this.lblEnCaja.AutoSize = true;
+            this.lblEnCaja.Location = new System.Drawing.Point(25, 111);
+            this.lblEnCaja.Name = "lblEnCaja";
+            this.lblEnCaja.Size = new System.Drawing.Size(47, 13);
+            this.lblEnCaja.TabIndex = 4;
+            this.lblEnCaja.Text = "En Caja:";
+            // 
+            // txtCaja
+            // 
+            this.txtCaja.Location = new System.Drawing.Point(79, 111);
+            this.txtCaja.Name = "txtCaja";
+            this.txtCaja.Size = new System.Drawing.Size(100, 20);
+            this.txtCaja.TabIndex = 6;
             // 
             // Form1
             // 
@@ -1223,9 +1227,9 @@ namespace VentasNuevo
             ((System.ComponentModel.ISupportInitialize)(this.dgvReportes)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCorte)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.PanelUsuario.ResumeLayout(false);
             this.PanelUsuario.PerformLayout();
             this.ResumeLayout(false);
@@ -1305,28 +1309,28 @@ namespace VentasNuevo
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDepartamentos;
         private System.Windows.Forms.TextBox txtTot;
         private System.Windows.Forms.Button btnTerminarCorte;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dgvCorte;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCod;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmPro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmCant;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmTot;
         private System.Windows.Forms.Label lblUsuCort;
         private System.Windows.Forms.Panel PanelUsuario;
         private System.Windows.Forms.Label lblNombreDelUsuario;
         private System.Windows.Forms.Label lblLogUser;
-        private System.Windows.Forms.Label lblEnCaja;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblInfoCorte;
         private System.Windows.Forms.Label lblObservaciones;
         private System.Windows.Forms.Label lblVentas;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox txtVenCort;
         private System.Windows.Forms.Label lblHora;
         private System.Windows.Forms.Timer Hora;
         private System.Windows.Forms.Label lblFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmPro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmCant;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmTot;
+        private System.Windows.Forms.TextBox txtCaja;
+        private System.Windows.Forms.Label lblEnCaja;
     }
 }
 

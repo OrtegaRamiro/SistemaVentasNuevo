@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
+using VentasNuevo.ValBD;
 
 namespace VentasNuevo
 {
@@ -19,6 +20,7 @@ namespace VentasNuevo
     {
         SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-74BBU83\\SQLEXPRESS ; Initial Catalog=VENTAS ; integrated security = true");
 
+        float suma = 0;
         double TotalC = 0;
         string valorCelda2;
         string valorCelda;
@@ -105,7 +107,30 @@ namespace VentasNuevo
         /*-------------------------BOTON DE CORTE-------------------------*/
         private void btnCorte_Click(object sender, EventArgs e)
         {
+            llenarDGVCorte();
+            sumaVentas();
             tcTodo.SelectedIndex = 4;
+            if (dgvCorte.Rows.Count == 0)
+            {
+
+            }
+            else
+            {
+                llenarDGVCorte();
+                /*dgvCorte.CurrentCell.Selected = false;
+                dgvCorte.ClearSelection();*/
+            }
+        }
+
+        private void FechaCorte()
+        {
+            var Fecha = DateTime.Now.ToString("yyyyMMdd hh:mm:ss");
+            string fec = "insert into FechaCorte VALUES @FECHA";
+
+            SqlCommand cmd = new SqlCommand(fec, conexion);
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
         }
 
         /*-------------------------BOTON QUE AGREGA COSAS QUE SE COMPRARAN-------------------------*/
@@ -213,7 +238,7 @@ namespace VentasNuevo
         /*-------------------------AGREGAR INTER COBRO A BD-------------------------*/
         private void InterBD(int val1, int val2, float val3)
         {
-            String Inter = "INSERT INTO Inter (Producto, idCobro,Cantidad, TotalPre) VALUES (@idProducto, @idCobro, @Cantidad, @TotalPre)";
+            String Inter = "INSERT INTO Inter (Producto, idCobro,Cantidad, TotalPre, Fecha) VALUES (@idProducto, @idCobro, @Cantidad, @TotalPre,GETDATE())";
 
             int id = 0;
             id = valorIDCobro(id);
@@ -429,11 +454,6 @@ namespace VentasNuevo
                     MessageBox.Show("Error: " + ex.Message);
                 }
             }
-        }
-
-        private void RefrescarDGVProductos()
-        {
-
         }
 
         /*-------------------------RESTRINGIR CARCATERES EN TEXTBOX-------------------------*/
@@ -764,11 +784,13 @@ namespace VentasNuevo
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            actEstado();
             Application.Exit();
         }
 
         private void btnTerminarCorte_Click(object sender, EventArgs e)
         {
+            Corte();
             actEstado();
             Login login = new Login();
             login.Show();
@@ -795,8 +817,58 @@ namespace VentasNuevo
         private void Hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
-            lblFecha.Text = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            lblFecha.Text = DateTime.Now.ToString("yyyyMMdd hh:mm:ss");
             //lblFecha.Text = DateTime.Now.ToLongDateString();
+        }
+        private void llenarDGVCorte()
+        {
+            conexion.Open();
+            string corte = "SELECT i.Producto AS Producto, p.nombre, SUM(i.Cantidad) AS CantidadTotal, SUM(i.TotalPre) AS PRECIOTOTAL FROM Inter i INNER JOIN Usuario u ON Fecha BETWEEN u.FechaEnt AND i.Fecha INNER JOIN Productos p ON i.Producto = p.Producto GROUP BY i.Producto, p.nombre;";
+
+            using (SqlCommand cmd = new SqlCommand(corte, conexion))
+            {
+                DataGridViewRow fila = new DataGridViewRow();
+                fila.CreateCells(dgvCorte);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvCorte.DataSource = dt;
+                conexion.Close();
+            }
+        }
+        private void sumaVentas()
+        {
+            string totCaja = "SELECT SUM(i.TotalPre) AS SUMA FROM Inter i INNER JOIN Usuario u ON Fecha BETWEEN u.FechaEnt AND i.Fecha;";
+
+            conexion.Open();
+
+            using(SqlCommand cmd = new SqlCommand(totCaja, conexion))
+            {
+                txtVenCort.Text = Convert.ToString(cmd.ExecuteScalar());
+
+                conexion.Close();
+            }
+
+
+           // txtCaja.Text = interCorte.TotalVenta.ToString();
+        }
+
+        private void Corte()
+        {
+            string corte = "INSERT INTO Corte (idUsuario, Total, FechaCorte, EnCaja) VALUES (@idUser,@Total,GETDATE(),@Caja);";
+
+            SqlCommand cmd = new SqlCommand(corte, conexion);
+            cmd.CommandType = CommandType.Text;
+
+
+            cmd.Parameters.AddWithValue("@idUser", LoginCache.idUsuario);
+            cmd.Parameters.AddWithValue("@Total", Convert.ToDecimal(txtVenCort.Text));
+            cmd.Parameters.AddWithValue("@Caja", Convert.ToDecimal(txtCaja.Text));
+            conexion.Open();
+            cmd.ExecuteNonQuery();
+            conexion.Close();
+
         }
     }
 }

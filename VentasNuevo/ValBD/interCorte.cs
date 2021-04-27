@@ -8,7 +8,6 @@ namespace VentasNuevo.ValBD
 {
     public static class interCorte
     {
-        public static int idinterCorte { get; set; }
-        public static int idCorte { get; set; }
+        public static string TotalVenta { get; set; }
     }
 }
