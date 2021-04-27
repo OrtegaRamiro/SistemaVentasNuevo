@@ -40,6 +40,7 @@ namespace VentasNuevo
             centrarColumnas(dataGridView1);
             centrarColumnas(dataGridView2);
             centrarColumnas(dgvProductos);
+            centrarColumnas(dgvCorte);
 
             AlternarColorDGV(dataGridView1);
             llenarTablaProductos();
@@ -89,7 +90,6 @@ namespace VentasNuevo
         {
             cargardgvRepor();
             GraficaReportes();
-
             tcTodo.SelectedIndex = 3;
             if(dgvProductos.Rows.Count == 0)
             {
@@ -100,8 +100,6 @@ namespace VentasNuevo
                 dgvReportes.CurrentCell.Selected = false;
                 dgvReportes.ClearSelection();
             }
-            //dgvReportes.CurrentCell.Selected = false;
-            //  dgvReportes.ClearSelection();
         }
 
         /*-------------------------BOTON DE CORTE-------------------------*/
@@ -109,6 +107,8 @@ namespace VentasNuevo
         {
             llenarDGVCorte();
             sumaVentas();
+            CorteTotal();
+
             tcTodo.SelectedIndex = 4;
             if (dgvCorte.Rows.Count == 0)
             {
@@ -117,20 +117,41 @@ namespace VentasNuevo
             else
             {
                 llenarDGVCorte();
-                /*dgvCorte.CurrentCell.Selected = false;
-                dgvCorte.ClearSelection();*/
+                dgvCorte.CurrentCell.Selected = false;
+                dgvCorte.ClearSelection();
             }
         }
-
-        private void FechaCorte()
+        /*-------------------------BOTON DE COBRO-------------------------*/
+        private void btnCobrar_Click(object sender, EventArgs e)
         {
-            var Fecha = DateTime.Now.ToString("yyyyMMdd hh:mm:ss");
-            string fec = "insert into FechaCorte VALUES @FECHA";
 
-            SqlCommand cmd = new SqlCommand(fec, conexion);
-            conexion.Open();
-            cmd.ExecuteNonQuery();
-            conexion.Close();
+            if (string.IsNullOrEmpty(tbMosPago.Text))
+            {
+                MessageBox.Show("INGRESE EL PAGO");
+            }
+            else if (float.Parse(tbMosPago.Text) < float.Parse(tbMosTotal2.Text))
+            {
+                MessageBox.Show("El pago es menor al TOTAL");
+            }
+            else
+            {
+                conexion.Close();
+                conexion.Open();
+                pagoTotal();
+                MessageBox.Show("PAGO REALIZADO CON EXTIO");
+                CobroBD(float.Parse(txtIVA.Text), float.Parse(tbMosTotal2.Text));
+
+                for (int i = 0; i < dataGridView1.RowCount; i++)
+                {
+                    float PrecTotal = Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value) * Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
+
+                    InterBD(Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value), PrecTotal);
+                    RestarStock(Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value));
+                }
+                conexion.Close();
+                dataGridView1.Rows.Clear();
+                LimpiarTXTVentas();
+            }
         }
 
         /*-------------------------BOTON QUE AGREGA COSAS QUE SE COMPRARAN-------------------------*/
@@ -139,6 +160,40 @@ namespace VentasNuevo
         {
             if (comprobar() == false)
                 AgregarCarrito();
+        }
+
+        /*-------------------------AGREGA NUEVO PRODUCTO EN EL APARTADO DE PRODUCTOS------------------------*/
+        private void btnDescAgregar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDescID.Text) || string.IsNullOrEmpty(txtProNom.Text) || string.IsNullOrEmpty(txtDescCat.Text) || string.IsNullOrEmpty(txtProCont.Text) || string.IsNullOrEmpty(txtDesCant.Text) || string.IsNullOrEmpty(txtDescPreCom.Text) || string.IsNullOrEmpty(txtDescPreVen.Text))
+            {
+                MessageBox.Show("Llene todos los campos necesarios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                String Insertar = "INSERT INTO Productos (Producto, idCategoria, Nombre, PrecioCompra, Precio, Contenido, VentasTotales, Stock) VALUES (@idProducto,@idCategoria,@nombre,@PrecioCompra,@Precio,@Contenido,@VentasTotales,@Stock)";
+                int id = 0;
+                id = valorIDProducto(id);
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand(Insertar, conexion);
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@idProducto", id);
+                cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(txtDescCat.Text));
+                cmd.Parameters.AddWithValue("@nombre", txtProNom.Text);
+                cmd.Parameters.AddWithValue("@PrecioCompra", float.Parse(txtDescPreCom.Text));
+                cmd.Parameters.AddWithValue("@Precio", float.Parse(txtDescPreVen.Text));
+                cmd.Parameters.AddWithValue("@Contenido", txtProCont.Text);
+                cmd.Parameters.AddWithValue("@VentasTotales", 0);
+                cmd.Parameters.AddWithValue("@Stock", Convert.ToInt32(txtDesCant.Text));
+                cmd.ExecuteNonQuery();
+                conexion.Close();
+                limpTXB2();
+                MessageBox.Show("PRODUCTO AGREGADO CORRECTAMENTE");
+                RecargarDGV();
+
+                id += 1;
+                txtDescID.Text = id.ToString();
+            }
         }
 
         /*-------------------------FUNCION PARA AGREGAR COSAS AL CARRITO-------------------------*/
@@ -178,6 +233,7 @@ namespace VentasNuevo
                     }
                     conexion.Close();
                     SumaTotal();
+
                     dataGridView1.CurrentCell.Selected = false;
                 }
                 catch (Exception ex)
@@ -292,39 +348,7 @@ namespace VentasNuevo
             cmd.ExecuteNonQuery();
         }
 
-        /*-------------------------BOTON DE COBRO-------------------------*/
-        private void btnCobrar_Click(object sender, EventArgs e)
-        {
 
-            if (string.IsNullOrEmpty(tbMosPago.Text))
-            {
-                MessageBox.Show("INGRESE EL PAGO");
-            }
-            else if (float.Parse(tbMosPago.Text) < float.Parse(tbMosTotal2.Text))
-            {
-                MessageBox.Show("El pago es menor al TOTAL");
-            }
-            else
-            {
-                conexion.Close();
-                conexion.Open();
-                pagoTotal();
-                MessageBox.Show("PAGO REALIZADO CON EXTIO");
-                CobroBD(float.Parse(txtIVA.Text), float.Parse(tbMosTotal2.Text));
-
-                for (int i = 0; i < dataGridView1.RowCount; i++)
-                {
-                    float PrecTotal = Convert.ToInt32(dataGridView1.Rows[i].Cells[2].Value) * Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
-
-                    InterBD(Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value), PrecTotal);
-                    RestarStock(Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value), Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value));
-
-                }
-                conexion.Close();
-                dataGridView1.Rows.Clear();
-               // Application.Restart();
-            }
-        }
 
         /*-------------------------RESTA STOCK AL COBRAR, DEPENDIENDO LA CANTIDAD-------------------------*/
         private void RestarStock(int val1, int val2)
@@ -529,11 +553,6 @@ namespace VentasNuevo
             txtProCont.Size = new Size(250, 45);
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         /*-------------------------OBTENCION DE 5 PRODUCTOS MAS VENDIDOS------------------------*/
         private void VentasTotalesGRA()
         {
@@ -653,39 +672,7 @@ namespace VentasNuevo
             txtDescID.Text = "";
         }
 
-        /*-------------------------AGREGA NUEVO PRODUCTO EN EL APARTADO DE PRODUCTOS------------------------*/
-        private void btnDescAgregar_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtDescID.Text) || string.IsNullOrEmpty(txtProNom.Text) || string.IsNullOrEmpty(txtDescCat.Text) || string.IsNullOrEmpty(txtProCont.Text) || string.IsNullOrEmpty(txtDesCant.Text) || string.IsNullOrEmpty(txtDescPreCom.Text) || string.IsNullOrEmpty(txtDescPreVen.Text))
-            {
-                MessageBox.Show("Llene todos los campos necesarios", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                String Insertar = "INSERT INTO Productos (Producto, idCategoria, Nombre, PrecioCompra, Precio, Contenido, VentasTotales, Stock) VALUES (@idProducto,@idCategoria,@nombre,@PrecioCompra,@Precio,@Contenido,@VentasTotales,@Stock)";
-                int id = 0;
-                id = valorIDProducto(id);
-                conexion.Open();
-                SqlCommand cmd = new SqlCommand(Insertar, conexion);
-                cmd.CommandType = CommandType.Text;
-                cmd.Parameters.AddWithValue("@idProducto", id);
-                cmd.Parameters.AddWithValue("@idCategoria", Convert.ToInt32(txtDescCat.Text));
-                cmd.Parameters.AddWithValue("@nombre", txtProNom.Text);
-                cmd.Parameters.AddWithValue("@PrecioCompra", float.Parse(txtDescPreCom.Text));
-                cmd.Parameters.AddWithValue("@Precio", float.Parse(txtDescPreVen.Text));
-                cmd.Parameters.AddWithValue("@Contenido", txtProCont.Text);
-                cmd.Parameters.AddWithValue("@VentasTotales", 0);
-                cmd.Parameters.AddWithValue("@Stock", Convert.ToInt32(txtDesCant.Text));
-                cmd.ExecuteNonQuery();
-                conexion.Close();
-                limpTXB2();
-                MessageBox.Show("PRODUCTO AGREGADO CORRECTAMENTE");
-                RecargarDGV();
 
-                id +=1;
-                txtDescID.Text = id.ToString();
-            }
-        }
         private void CombCategorias()
         {
             try
@@ -817,8 +804,7 @@ namespace VentasNuevo
         private void Hora_Tick(object sender, EventArgs e)
         {
             lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
-            lblFecha.Text = DateTime.Now.ToString("yyyyMMdd hh:mm:ss");
-            //lblFecha.Text = DateTime.Now.ToLongDateString();
+            lblFecha.Text = DateTime.Now.ToLongDateString();
         }
         private void llenarDGVCorte()
         {
@@ -856,7 +842,7 @@ namespace VentasNuevo
 
         private void Corte()
         {
-            string corte = "INSERT INTO Corte (idUsuario, Total, FechaCorte, EnCaja) VALUES (@idUser,@Total,GETDATE(),@Caja);";
+            string corte = "INSERT INTO Corte (idUsuario, Total, FechaCorte, EnCaja, Observaciones) VALUES (@idUser,@Total,GETDATE(),@Caja,@Observaciones);";
 
             SqlCommand cmd = new SqlCommand(corte, conexion);
             cmd.CommandType = CommandType.Text;
@@ -865,10 +851,37 @@ namespace VentasNuevo
             cmd.Parameters.AddWithValue("@idUser", LoginCache.idUsuario);
             cmd.Parameters.AddWithValue("@Total", Convert.ToDecimal(txtVenCort.Text));
             cmd.Parameters.AddWithValue("@Caja", Convert.ToDecimal(txtCaja.Text));
+            cmd.Parameters.AddWithValue("@Observaciones", txtCorObser.Text);
             conexion.Open();
             cmd.ExecuteNonQuery();
             conexion.Close();
 
+        }
+
+        private void CorteTotal()
+        {
+            double Tot = 0;
+            foreach (DataGridViewRow row in dgvCorte.Rows)
+            {
+                Tot += (Convert.ToDouble(row.Cells["ClmTot"].Value));
+            }
+            txtTotVendido.Text = Tot.ToString("0.00", CultureInfo.InvariantCulture);
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+            SumaTotal();
+        }
+        private void LimpiarTXTVentas()
+        {
+            tbProducto.Text = "";
+            tbCantidad.Text = "";
+            tbMosTotal.Text = "0.00";
+            txtIVA.Text = "0.00";
+            tbMosTotal2.Text = "0.00";
+            tbMosPago.Text = "";
+            tbMosCambio.Text = "";
         }
     }
 }

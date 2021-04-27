@@ -24,7 +24,6 @@ namespace VentasNuevo
 
         private void login()
         {
-            //  string loguarse = "select nomUsuario, contra FROM Usuario WHERE nomUsuario ='"+txtUsuario.Text+"' AND contra = '"+txtContra.Text+"'";
             string loguarse = "select * FROM Usuario WHERE nomUsuario ='" + txtUsuario.Text + "' AND contra = '" + txtContra.Text + "'";
             conexion.Open();
             using (SqlCommand cmd = new SqlCommand(loguarse, conexion))
