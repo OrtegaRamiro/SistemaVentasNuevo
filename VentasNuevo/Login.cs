@@ -54,10 +54,7 @@ namespace VentasNuevo
         private void actEstado()
         {
             string act = "UPDATE Usuario SET Estado = 1, FechaEnt = @fecha WHERE nomUsuario = @nomUser";
-            //string fecha = DateTime.Now.ToString("dd:MM:yyyy:hh:mm:ss");
-            //string fecha = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            
-
+         
             conexion.Open();
             SqlCommand cmd = new SqlCommand(act, conexion);
 
