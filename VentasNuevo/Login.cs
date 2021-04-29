@@ -45,7 +45,7 @@ namespace VentasNuevo
                 }
                 else
                 {
-
+                    MessageBox.Show("Usuario y/o Contraseña Incorrectos");
                 }
             }
             conexion.Close();

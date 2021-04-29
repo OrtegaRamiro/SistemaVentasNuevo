@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="img\admin.png" />
     <Content Include="img\Corte.png" />
+    <Content Include="img\login.png" />
     <Content Include="img\Reporte.png" />
     <Content Include="img\Productos.png" />
     <Content Include="img\Ventas.png" />

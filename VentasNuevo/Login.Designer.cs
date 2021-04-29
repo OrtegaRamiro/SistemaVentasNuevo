@@ -30,17 +30,20 @@ namespace VentasNuevo
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContra = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TimerInicio = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(298, 300);
+            this.btnLogin.Location = new System.Drawing.Point(184, 299);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 0;
@@ -51,7 +54,7 @@ namespace VentasNuevo
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(234, 242);
+            this.label1.Location = new System.Drawing.Point(122, 238);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 1;
@@ -59,14 +62,14 @@ namespace VentasNuevo
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(287, 235);
+            this.txtUsuario.Location = new System.Drawing.Point(175, 235);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 2;
             // 
             // txtContra
             // 
-            this.txtContra.Location = new System.Drawing.Point(287, 261);
+            this.txtContra.Location = new System.Drawing.Point(175, 264);
             this.txtContra.Name = "txtContra";
             this.txtContra.Size = new System.Drawing.Size(100, 20);
             this.txtContra.TabIndex = 3;
@@ -74,7 +77,7 @@ namespace VentasNuevo
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(216, 268);
+            this.label2.Location = new System.Drawing.Point(104, 264);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 4;
@@ -84,11 +87,22 @@ namespace VentasNuevo
             // 
             this.TimerInicio.Enabled = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(125, 40);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(200, 140);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(434, 411);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtContra);
             this.Controls.Add(this.txtUsuario);
@@ -98,6 +112,7 @@ namespace VentasNuevo
             this.Text = "Login";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.Load += new System.EventHandler(this.Login_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +126,6 @@ namespace VentasNuevo
         private System.Windows.Forms.TextBox txtContra;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Timer TimerInicio;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
