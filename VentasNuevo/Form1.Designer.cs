@@ -48,7 +48,6 @@ namespace VentasNuevo
             this.tcTodo = new System.Windows.Forms.TabControl();
             this.tcVentas = new System.Windows.Forms.TabPage();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnCobrar = new System.Windows.Forms.Button();
             this.tbMosTotal2 = new System.Windows.Forms.TextBox();
             this.tbMosCambio = new System.Windows.Forms.TextBox();
             this.tbMosTotal = new System.Windows.Forms.TextBox();
@@ -137,6 +136,7 @@ namespace VentasNuevo
             this.lblNombreDelUsuario = new System.Windows.Forms.Label();
             this.lblLogUser = new System.Windows.Forms.Label();
             this.Hora = new System.Windows.Forms.Timer(this.components);
+            this.btnCobrar = new System.Windows.Forms.Button();
             this.tcTodo.SuspendLayout();
             this.tcVentas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -168,6 +168,7 @@ namespace VentasNuevo
             this.tcTodo.Controls.Add(this.tabPage1);
             this.tcTodo.Controls.Add(this.tabPage3);
             this.tcTodo.Controls.Add(this.tabPage4);
+            this.tcTodo.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tcTodo.Location = new System.Drawing.Point(0, 141);
             this.tcTodo.Multiline = true;
             this.tcTodo.Name = "tcTodo";
@@ -177,6 +178,7 @@ namespace VentasNuevo
             // 
             // tcVentas
             // 
+            this.tcVentas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.tcVentas.Controls.Add(this.btnAgregar);
             this.tcVentas.Controls.Add(this.btnCobrar);
             this.tcVentas.Controls.Add(this.tbMosTotal2);
@@ -197,107 +199,105 @@ namespace VentasNuevo
             this.tcVentas.Location = new System.Drawing.Point(4, 4);
             this.tcVentas.Name = "tcVentas";
             this.tcVentas.Padding = new System.Windows.Forms.Padding(3);
-            this.tcVentas.Size = new System.Drawing.Size(1158, 481);
+            this.tcVentas.Size = new System.Drawing.Size(1158, 476);
             this.tcVentas.TabIndex = 0;
             this.tcVentas.Text = "Ventas";
-            this.tcVentas.UseVisualStyleBackColor = true;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(146, 226);
+            this.btnAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnAgregar.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.Location = new System.Drawing.Point(144, 117);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(97, 34);
             this.btnAgregar.TabIndex = 16;
             this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnCobrar
-            // 
-            this.btnCobrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCobrar.Location = new System.Drawing.Point(910, 411);
-            this.btnCobrar.Name = "btnCobrar";
-            this.btnCobrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCobrar.TabIndex = 15;
-            this.btnCobrar.Text = "Cobrar";
-            this.btnCobrar.UseVisualStyleBackColor = true;
-            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
             // 
             // tbMosTotal2
             // 
             this.tbMosTotal2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbMosTotal2.Location = new System.Drawing.Point(541, 411);
+            this.tbMosTotal2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMosTotal2.Location = new System.Drawing.Point(535, 434);
             this.tbMosTotal2.Name = "tbMosTotal2";
             this.tbMosTotal2.ReadOnly = true;
-            this.tbMosTotal2.Size = new System.Drawing.Size(100, 20);
+            this.tbMosTotal2.Size = new System.Drawing.Size(100, 26);
             this.tbMosTotal2.TabIndex = 14;
             this.tbMosTotal2.Text = "0.00";
             // 
             // tbMosCambio
             // 
             this.tbMosCambio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbMosCambio.Location = new System.Drawing.Point(753, 411);
+            this.tbMosCambio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMosCambio.Location = new System.Drawing.Point(747, 434);
             this.tbMosCambio.Name = "tbMosCambio";
             this.tbMosCambio.ReadOnly = true;
-            this.tbMosCambio.Size = new System.Drawing.Size(100, 20);
+            this.tbMosCambio.Size = new System.Drawing.Size(100, 26);
             this.tbMosCambio.TabIndex = 13;
             // 
             // tbMosTotal
             // 
             this.tbMosTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbMosTotal.Location = new System.Drawing.Point(328, 411);
+            this.tbMosTotal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMosTotal.Location = new System.Drawing.Point(322, 434);
             this.tbMosTotal.Name = "tbMosTotal";
             this.tbMosTotal.ReadOnly = true;
-            this.tbMosTotal.Size = new System.Drawing.Size(100, 20);
+            this.tbMosTotal.Size = new System.Drawing.Size(100, 26);
             this.tbMosTotal.TabIndex = 12;
             this.tbMosTotal.Text = "0.00";
             // 
             // txtIVA
             // 
             this.txtIVA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtIVA.Location = new System.Drawing.Point(434, 411);
+            this.txtIVA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIVA.Location = new System.Drawing.Point(428, 434);
             this.txtIVA.Name = "txtIVA";
             this.txtIVA.ReadOnly = true;
-            this.txtIVA.Size = new System.Drawing.Size(100, 20);
+            this.txtIVA.Size = new System.Drawing.Size(100, 26);
             this.txtIVA.TabIndex = 11;
             this.txtIVA.Text = "0.00";
             // 
             // Cambio
             // 
             this.Cambio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Cambio.Location = new System.Drawing.Point(752, 385);
+            this.Cambio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cambio.Location = new System.Drawing.Point(746, 408);
             this.Cambio.Name = "Cambio";
             this.Cambio.ReadOnly = true;
-            this.Cambio.Size = new System.Drawing.Size(100, 20);
+            this.Cambio.Size = new System.Drawing.Size(100, 26);
             this.Cambio.TabIndex = 10;
             this.Cambio.Text = "Cambio:";
             // 
             // tbMosPago
             // 
             this.tbMosPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbMosPago.Location = new System.Drawing.Point(647, 411);
+            this.tbMosPago.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbMosPago.Location = new System.Drawing.Point(641, 434);
             this.tbMosPago.Name = "tbMosPago";
-            this.tbMosPago.Size = new System.Drawing.Size(100, 20);
+            this.tbMosPago.Size = new System.Drawing.Size(100, 26);
             this.tbMosPago.TabIndex = 9;
             this.tbMosPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMosPago_KeyPress);
             // 
             // IVA
             // 
             this.IVA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.IVA.Location = new System.Drawing.Point(434, 385);
+            this.IVA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IVA.Location = new System.Drawing.Point(428, 408);
             this.IVA.Name = "IVA";
             this.IVA.ReadOnly = true;
-            this.IVA.Size = new System.Drawing.Size(100, 20);
+            this.IVA.Size = new System.Drawing.Size(100, 26);
             this.IVA.TabIndex = 8;
             this.IVA.Text = "IVA:";
             // 
             // TotalIVA
             // 
             this.TotalIVA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TotalIVA.Location = new System.Drawing.Point(540, 385);
+            this.TotalIVA.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalIVA.Location = new System.Drawing.Point(534, 408);
             this.TotalIVA.Name = "TotalIVA";
             this.TotalIVA.ReadOnly = true;
-            this.TotalIVA.Size = new System.Drawing.Size(100, 20);
+            this.TotalIVA.Size = new System.Drawing.Size(100, 26);
             this.TotalIVA.TabIndex = 7;
             this.TotalIVA.Text = "Total con IVA:";
             // 
@@ -305,20 +305,22 @@ namespace VentasNuevo
             // 
             this.Pago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Pago.BackColor = System.Drawing.SystemColors.Control;
-            this.Pago.Location = new System.Drawing.Point(646, 385);
+            this.Pago.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Pago.Location = new System.Drawing.Point(640, 408);
             this.Pago.Name = "Pago";
             this.Pago.ReadOnly = true;
-            this.Pago.Size = new System.Drawing.Size(100, 20);
+            this.Pago.Size = new System.Drawing.Size(100, 26);
             this.Pago.TabIndex = 6;
             this.Pago.Text = "Pago Con:";
             // 
             // Total
             // 
             this.Total.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Total.Location = new System.Drawing.Point(328, 385);
+            this.Total.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Total.Location = new System.Drawing.Point(322, 408);
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
-            this.Total.Size = new System.Drawing.Size(100, 20);
+            this.Total.Size = new System.Drawing.Size(100, 26);
             this.Total.TabIndex = 5;
             this.Total.Text = "Total:";
             // 
@@ -328,11 +330,13 @@ namespace VentasNuevo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCantidad.AutoSize = true;
-            this.lblCantidad.Location = new System.Drawing.Point(88, 183);
+            this.lblCantidad.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(9, 86);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(52, 13);
+            this.lblCantidad.Size = new System.Drawing.Size(90, 22);
             this.lblCantidad.TabIndex = 4;
             this.lblCantidad.Text = "Cantidad:";
+            this.lblCantidad.Click += new System.EventHandler(this.lblCantidad_Click);
             // 
             // lblPro
             // 
@@ -340,9 +344,10 @@ namespace VentasNuevo
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPro.AutoSize = true;
-            this.lblPro.Location = new System.Drawing.Point(85, 156);
+            this.lblPro.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPro.Location = new System.Drawing.Point(6, 52);
             this.lblPro.Name = "lblPro";
-            this.lblPro.Size = new System.Drawing.Size(53, 13);
+            this.lblPro.Size = new System.Drawing.Size(92, 22);
             this.lblPro.TabIndex = 3;
             this.lblPro.Text = "Producto:";
             // 
@@ -350,9 +355,9 @@ namespace VentasNuevo
             // 
             this.tbCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbCantidad.Location = new System.Drawing.Point(146, 177);
+            this.tbCantidad.Location = new System.Drawing.Point(97, 85);
             this.tbCantidad.Name = "tbCantidad";
-            this.tbCantidad.Size = new System.Drawing.Size(100, 20);
+            this.tbCantidad.Size = new System.Drawing.Size(191, 26);
             this.tbCantidad.TabIndex = 2;
             this.tbCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbCantidad_KeyPress);
             // 
@@ -360,9 +365,9 @@ namespace VentasNuevo
             // 
             this.tbProducto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.tbProducto.Location = new System.Drawing.Point(146, 150);
+            this.tbProducto.Location = new System.Drawing.Point(97, 51);
             this.tbProducto.Name = "tbProducto";
-            this.tbProducto.Size = new System.Drawing.Size(100, 20);
+            this.tbProducto.Size = new System.Drawing.Size(191, 26);
             this.tbProducto.TabIndex = 1;
             this.tbProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProducto_KeyPress);
             // 
@@ -382,10 +387,10 @@ namespace VentasNuevo
             this.clmProducto,
             this.clmPrecio,
             this.clmCantidad});
-            this.dataGridView1.Location = new System.Drawing.Point(328, 64);
+            this.dataGridView1.Location = new System.Drawing.Point(296, 15);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(621, 226);
+            this.dataGridView1.Size = new System.Drawing.Size(854, 370);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowValidated);
@@ -419,21 +424,23 @@ namespace VentasNuevo
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.Silver;
             this.tabPage2.Controls.Add(this.panel1);
             this.tabPage2.Controls.Add(this.dgvProductos);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1158, 481);
+            this.tabPage2.Size = new System.Drawing.Size(1158, 476);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Productos";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel1.Controls.Add(this.cbCategoria);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnDescAgregar);
@@ -454,7 +461,7 @@ namespace VentasNuevo
             this.panel1.Controls.Add(this.lblProducto);
             this.panel1.Location = new System.Drawing.Point(814, 6);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 460);
+            this.panel1.Size = new System.Drawing.Size(314, 455);
             this.panel1.TabIndex = 2;
             // 
             // cbCategoria
@@ -463,64 +470,65 @@ namespace VentasNuevo
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Items.AddRange(new object[] {
             "Seleccionar"});
-            this.cbCategoria.Location = new System.Drawing.Point(190, 155);
+            this.cbCategoria.Location = new System.Drawing.Point(138, 174);
             this.cbCategoria.Name = "cbCategoria";
-            this.cbCategoria.Size = new System.Drawing.Size(121, 21);
+            this.cbCategoria.Size = new System.Drawing.Size(121, 26);
             this.cbCategoria.TabIndex = 17;
             this.cbCategoria.SelectedIndexChanged += new System.EventHandler(this.cbCategoria_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(115, 22);
+            this.label1.Location = new System.Drawing.Point(42, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(91, 18);
             this.label1.TabIndex = 16;
             this.label1.Text = "Seleccionar";
             // 
             // btnDescAgregar
             // 
+            this.btnDescAgregar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDescAgregar.Enabled = false;
-            this.btnDescAgregar.Location = new System.Drawing.Point(103, 417);
+            this.btnDescAgregar.Location = new System.Drawing.Point(138, 407);
             this.btnDescAgregar.Name = "btnDescAgregar";
-            this.btnDescAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnDescAgregar.Size = new System.Drawing.Size(121, 29);
             this.btnDescAgregar.TabIndex = 15;
             this.btnDescAgregar.Text = "Agregar";
-            this.btnDescAgregar.UseVisualStyleBackColor = true;
+            this.btnDescAgregar.UseVisualStyleBackColor = false;
             this.btnDescAgregar.Click += new System.EventHandler(this.btnDescAgregar_Click);
             // 
             // txtDescID
             // 
-            this.txtDescID.Location = new System.Drawing.Point(89, 85);
+            this.txtDescID.Location = new System.Drawing.Point(138, 78);
             this.txtDescID.Name = "txtDescID";
             this.txtDescID.ReadOnly = true;
-            this.txtDescID.Size = new System.Drawing.Size(100, 20);
+            this.txtDescID.Size = new System.Drawing.Size(121, 26);
             this.txtDescID.TabIndex = 14;
             // 
             // lblidPro
             // 
             this.lblidPro.AutoSize = true;
-            this.lblidPro.Location = new System.Drawing.Point(61, 92);
+            this.lblidPro.Location = new System.Drawing.Point(106, 81);
             this.lblidPro.Name = "lblidPro";
-            this.lblidPro.Size = new System.Drawing.Size(21, 13);
+            this.lblidPro.Size = new System.Drawing.Size(27, 18);
             this.lblidPro.TabIndex = 13;
             this.lblidPro.Text = "ID:";
             // 
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(27, 159);
+            this.lblCategoria.Location = new System.Drawing.Point(49, 145);
             this.lblCategoria.Name = "lblCategoria";
-            this.lblCategoria.Size = new System.Drawing.Size(55, 13);
+            this.lblCategoria.Size = new System.Drawing.Size(82, 18);
             this.lblCategoria.TabIndex = 12;
             this.lblCategoria.Text = "Categoria:";
             // 
             // txtDescCat
             // 
-            this.txtDescCat.Location = new System.Drawing.Point(89, 156);
+            this.txtDescCat.Location = new System.Drawing.Point(138, 142);
             this.txtDescCat.Name = "txtDescCat";
             this.txtDescCat.ReadOnly = true;
-            this.txtDescCat.Size = new System.Drawing.Size(100, 20);
+            this.txtDescCat.Size = new System.Drawing.Size(121, 26);
             this.txtDescCat.TabIndex = 11;
             // 
             // comboBox1
@@ -530,94 +538,94 @@ namespace VentasNuevo
             this.comboBox1.Items.AddRange(new object[] {
             "Ver",
             "Agregar"});
-            this.comboBox1.Location = new System.Drawing.Point(89, 38);
+            this.comboBox1.Location = new System.Drawing.Point(138, 46);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.Size = new System.Drawing.Size(121, 26);
             this.comboBox1.TabIndex = 10;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // txtDescPreVen
             // 
-            this.txtDescPreVen.Location = new System.Drawing.Point(89, 369);
+            this.txtDescPreVen.Location = new System.Drawing.Point(138, 375);
             this.txtDescPreVen.Name = "txtDescPreVen";
             this.txtDescPreVen.ReadOnly = true;
-            this.txtDescPreVen.Size = new System.Drawing.Size(100, 20);
+            this.txtDescPreVen.Size = new System.Drawing.Size(100, 26);
             this.txtDescPreVen.TabIndex = 9;
             // 
             // txtDescPreCom
             // 
-            this.txtDescPreCom.Location = new System.Drawing.Point(89, 343);
+            this.txtDescPreCom.Location = new System.Drawing.Point(138, 343);
             this.txtDescPreCom.Name = "txtDescPreCom";
             this.txtDescPreCom.ReadOnly = true;
-            this.txtDescPreCom.Size = new System.Drawing.Size(100, 20);
+            this.txtDescPreCom.Size = new System.Drawing.Size(121, 26);
             this.txtDescPreCom.TabIndex = 8;
             // 
             // txtProCont
             // 
-            this.txtProCont.Location = new System.Drawing.Point(33, 221);
+            this.txtProCont.Location = new System.Drawing.Point(138, 206);
             this.txtProCont.Name = "txtProCont";
             this.txtProCont.ReadOnly = true;
-            this.txtProCont.Size = new System.Drawing.Size(193, 20);
+            this.txtProCont.Size = new System.Drawing.Size(121, 26);
             this.txtProCont.TabIndex = 7;
             // 
             // txtDesCant
             // 
-            this.txtDesCant.Location = new System.Drawing.Point(89, 317);
+            this.txtDesCant.Location = new System.Drawing.Point(138, 311);
             this.txtDesCant.Name = "txtDesCant";
             this.txtDesCant.ReadOnly = true;
-            this.txtDesCant.Size = new System.Drawing.Size(100, 20);
+            this.txtDesCant.Size = new System.Drawing.Size(121, 26);
             this.txtDesCant.TabIndex = 6;
             // 
             // txtProNom
             // 
-            this.txtProNom.Location = new System.Drawing.Point(89, 111);
+            this.txtProNom.Location = new System.Drawing.Point(138, 110);
             this.txtProNom.Name = "txtProNom";
             this.txtProNom.ReadOnly = true;
-            this.txtProNom.Size = new System.Drawing.Size(100, 20);
+            this.txtProNom.Size = new System.Drawing.Size(121, 26);
             this.txtProNom.TabIndex = 5;
             // 
             // lblContenido
             // 
             this.lblContenido.AutoSize = true;
-            this.lblContenido.Location = new System.Drawing.Point(30, 205);
+            this.lblContenido.Location = new System.Drawing.Point(49, 209);
             this.lblContenido.Name = "lblContenido";
-            this.lblContenido.Size = new System.Drawing.Size(58, 13);
+            this.lblContenido.Size = new System.Drawing.Size(84, 18);
             this.lblContenido.TabIndex = 4;
             this.lblContenido.Text = "Contenido:";
             // 
             // lblCant
             // 
             this.lblCant.AutoSize = true;
-            this.lblCant.Location = new System.Drawing.Point(30, 317);
+            this.lblCant.Location = new System.Drawing.Point(56, 314);
             this.lblCant.Name = "lblCant";
-            this.lblCant.Size = new System.Drawing.Size(52, 13);
+            this.lblCant.Size = new System.Drawing.Size(76, 18);
             this.lblCant.TabIndex = 3;
             this.lblCant.Text = "Cantidad:";
             // 
             // lblPreCom
             // 
             this.lblPreCom.AutoSize = true;
-            this.lblPreCom.Location = new System.Drawing.Point(4, 346);
+            this.lblPreCom.Location = new System.Drawing.Point(14, 346);
             this.lblPreCom.Name = "lblPreCom";
-            this.lblPreCom.Size = new System.Drawing.Size(79, 13);
+            this.lblPreCom.Size = new System.Drawing.Size(119, 18);
             this.lblPreCom.TabIndex = 2;
             this.lblPreCom.Text = "Precio Compra:";
             // 
             // lblPreVen
             // 
             this.lblPreVen.AutoSize = true;
-            this.lblPreVen.Location = new System.Drawing.Point(12, 372);
+            this.lblPreVen.Location = new System.Drawing.Point(30, 378);
             this.lblPreVen.Name = "lblPreVen";
-            this.lblPreVen.Size = new System.Drawing.Size(71, 13);
+            this.lblPreVen.Size = new System.Drawing.Size(102, 18);
             this.lblPreVen.TabIndex = 1;
             this.lblPreVen.Text = "Precio Venta:";
             // 
             // lblProducto
             // 
             this.lblProducto.AutoSize = true;
-            this.lblProducto.Location = new System.Drawing.Point(30, 114);
+            this.lblProducto.Location = new System.Drawing.Point(56, 113);
             this.lblProducto.Name = "lblProducto";
-            this.lblProducto.Size = new System.Drawing.Size(53, 13);
+            this.lblProducto.Size = new System.Drawing.Size(75, 18);
             this.lblProducto.TabIndex = 0;
             this.lblProducto.Text = "Producto:";
             // 
@@ -638,10 +646,10 @@ namespace VentasNuevo
             this.clmConDesc,
             this.clmPreDesc,
             this.clmStoDesc});
-            this.dgvProductos.Location = new System.Drawing.Point(289, 6);
+            this.dgvProductos.Location = new System.Drawing.Point(254, 6);
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.ReadOnly = true;
-            this.dgvProductos.Size = new System.Drawing.Size(519, 460);
+            this.dgvProductos.Size = new System.Drawing.Size(542, 464);
             this.dgvProductos.TabIndex = 1;
             this.dgvProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProductos_CellClick);
             // 
@@ -698,10 +706,10 @@ namespace VentasNuevo
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmIDCategoria,
             this.clmDepartamentos});
-            this.dataGridView2.Location = new System.Drawing.Point(43, 6);
+            this.dataGridView2.Location = new System.Drawing.Point(8, 6);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(240, 460);
+            this.dataGridView2.Size = new System.Drawing.Size(240, 464);
             this.dataGridView2.TabIndex = 0;
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
@@ -728,7 +736,7 @@ namespace VentasNuevo
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1158, 481);
+            this.tabPage1.Size = new System.Drawing.Size(1158, 476);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Admin";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -795,7 +803,7 @@ namespace VentasNuevo
             this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            this.chart1.Size = new System.Drawing.Size(550, 475);
+            this.chart1.Size = new System.Drawing.Size(550, 470);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
             // 
@@ -806,7 +814,7 @@ namespace VentasNuevo
             this.tabPage3.Location = new System.Drawing.Point(4, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1158, 481);
+            this.tabPage3.Size = new System.Drawing.Size(1158, 476);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "Reportes de Ventas";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -838,7 +846,7 @@ namespace VentasNuevo
             series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series3.Name = "Comportamiento";
             this.chartReport.Series.Add(series3);
-            this.chartReport.Size = new System.Drawing.Size(498, 469);
+            this.chartReport.Size = new System.Drawing.Size(498, 464);
             this.chartReport.TabIndex = 1;
             this.chartReport.Text = "chart4";
             // 
@@ -861,7 +869,7 @@ namespace VentasNuevo
             this.clmVentas});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -872,7 +880,7 @@ namespace VentasNuevo
             this.dgvReportes.Location = new System.Drawing.Point(6, 6);
             this.dgvReportes.Name = "dgvReportes";
             this.dgvReportes.ReadOnly = true;
-            this.dgvReportes.Size = new System.Drawing.Size(640, 469);
+            this.dgvReportes.Size = new System.Drawing.Size(640, 464);
             this.dgvReportes.TabIndex = 0;
             // 
             // clmAnio
@@ -907,7 +915,7 @@ namespace VentasNuevo
             this.tabPage4.Location = new System.Drawing.Point(4, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1158, 481);
+            this.tabPage4.Size = new System.Drawing.Size(1158, 476);
             this.tabPage4.TabIndex = 4;
             this.tabPage4.Text = "Corte";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -915,9 +923,9 @@ namespace VentasNuevo
             // lblUsuCort
             // 
             this.lblUsuCort.AutoSize = true;
-            this.lblUsuCort.Location = new System.Drawing.Point(928, 275);
+            this.lblUsuCort.Location = new System.Drawing.Point(952, 365);
             this.lblUsuCort.Name = "lblUsuCort";
-            this.lblUsuCort.Size = new System.Drawing.Size(65, 13);
+            this.lblUsuCort.Size = new System.Drawing.Size(95, 18);
             this.lblUsuCort.TabIndex = 5;
             this.lblUsuCort.Text = "NomUsuario";
             // 
@@ -925,25 +933,28 @@ namespace VentasNuevo
             // 
             this.txtTotVendido.Location = new System.Drawing.Point(732, 446);
             this.txtTotVendido.Name = "txtTotVendido";
-            this.txtTotVendido.Size = new System.Drawing.Size(100, 20);
+            this.txtTotVendido.Size = new System.Drawing.Size(100, 26);
             this.txtTotVendido.TabIndex = 4;
             // 
             // txtTot
             // 
             this.txtTot.Location = new System.Drawing.Point(403, 446);
             this.txtTot.Name = "txtTot";
-            this.txtTot.Size = new System.Drawing.Size(331, 20);
+            this.txtTot.Size = new System.Drawing.Size(331, 26);
             this.txtTot.TabIndex = 3;
             this.txtTot.Text = "Total:";
             // 
             // btnTerminarCorte
             // 
-            this.btnTerminarCorte.Location = new System.Drawing.Point(931, 401);
+            this.btnTerminarCorte.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnTerminarCorte.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTerminarCorte.Location = new System.Drawing.Point(931, 409);
             this.btnTerminarCorte.Name = "btnTerminarCorte";
-            this.btnTerminarCorte.Size = new System.Drawing.Size(85, 38);
+            this.btnTerminarCorte.Size = new System.Drawing.Size(152, 30);
             this.btnTerminarCorte.TabIndex = 2;
             this.btnTerminarCorte.Text = "Terminar Corte";
-            this.btnTerminarCorte.UseVisualStyleBackColor = true;
+            this.btnTerminarCorte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTerminarCorte.UseVisualStyleBackColor = false;
             this.btnTerminarCorte.Click += new System.EventHandler(this.btnTerminarCorte_Click);
             // 
             // dgvCorte
@@ -955,7 +966,7 @@ namespace VentasNuevo
             this.dgvCorte.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1004,6 +1015,7 @@ namespace VentasNuevo
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.panel2.Controls.Add(this.txtCorObser);
             this.panel2.Controls.Add(this.txtCaja);
             this.panel2.Controls.Add(this.txtVenCort);
@@ -1018,68 +1030,70 @@ namespace VentasNuevo
             // 
             // txtCorObser
             // 
-            this.txtCorObser.Location = new System.Drawing.Point(113, 202);
+            this.txtCorObser.Location = new System.Drawing.Point(189, 185);
             this.txtCorObser.Name = "txtCorObser";
-            this.txtCorObser.Size = new System.Drawing.Size(100, 20);
+            this.txtCorObser.Size = new System.Drawing.Size(113, 26);
             this.txtCorObser.TabIndex = 7;
             // 
             // txtCaja
             // 
-            this.txtCaja.Location = new System.Drawing.Point(79, 111);
+            this.txtCaja.Location = new System.Drawing.Point(189, 137);
             this.txtCaja.Name = "txtCaja";
-            this.txtCaja.Size = new System.Drawing.Size(100, 20);
+            this.txtCaja.Size = new System.Drawing.Size(113, 26);
             this.txtCaja.TabIndex = 6;
             // 
             // txtVenCort
             // 
-            this.txtVenCort.Location = new System.Drawing.Point(79, 73);
+            this.txtVenCort.Location = new System.Drawing.Point(189, 105);
             this.txtVenCort.Name = "txtVenCort";
             this.txtVenCort.ReadOnly = true;
-            this.txtVenCort.Size = new System.Drawing.Size(100, 20);
+            this.txtVenCort.Size = new System.Drawing.Size(113, 26);
             this.txtVenCort.TabIndex = 5;
             // 
             // lblEnCaja
             // 
             this.lblEnCaja.AutoSize = true;
-            this.lblEnCaja.Location = new System.Drawing.Point(25, 111);
+            this.lblEnCaja.Location = new System.Drawing.Point(115, 140);
             this.lblEnCaja.Name = "lblEnCaja";
-            this.lblEnCaja.Size = new System.Drawing.Size(47, 13);
+            this.lblEnCaja.Size = new System.Drawing.Size(68, 18);
             this.lblEnCaja.TabIndex = 4;
             this.lblEnCaja.Text = "En Caja:";
             // 
             // lblInfoCorte
             // 
             this.lblInfoCorte.AutoSize = true;
-            this.lblInfoCorte.Location = new System.Drawing.Point(66, 12);
+            this.lblInfoCorte.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInfoCorte.Location = new System.Drawing.Point(55, 39);
             this.lblInfoCorte.Name = "lblInfoCorte";
-            this.lblInfoCorte.Size = new System.Drawing.Size(146, 13);
+            this.lblInfoCorte.Size = new System.Drawing.Size(262, 22);
             this.lblInfoCorte.TabIndex = 2;
             this.lblInfoCorte.Text = "INFORMACIÓN DEL CORTE";
             // 
             // lblObservaciones
             // 
             this.lblObservaciones.AutoSize = true;
-            this.lblObservaciones.Location = new System.Drawing.Point(25, 202);
+            this.lblObservaciones.Location = new System.Drawing.Point(66, 188);
             this.lblObservaciones.Name = "lblObservaciones";
-            this.lblObservaciones.Size = new System.Drawing.Size(81, 13);
+            this.lblObservaciones.Size = new System.Drawing.Size(117, 18);
             this.lblObservaciones.TabIndex = 1;
             this.lblObservaciones.Text = "Observaciones:";
             // 
             // lblVentas
             // 
             this.lblVentas.AutoSize = true;
-            this.lblVentas.Location = new System.Drawing.Point(29, 73);
+            this.lblVentas.Location = new System.Drawing.Point(123, 108);
             this.lblVentas.Name = "lblVentas";
-            this.lblVentas.Size = new System.Drawing.Size(43, 13);
+            this.lblVentas.Size = new System.Drawing.Size(60, 18);
             this.lblVentas.TabIndex = 0;
             this.lblVentas.Text = "Ventas:";
             // 
             // btnVentas
             // 
+            this.btnVentas.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVentas.Image = ((System.Drawing.Image)(resources.GetObject("btnVentas.Image")));
-            this.btnVentas.Location = new System.Drawing.Point(80, 25);
+            this.btnVentas.Location = new System.Drawing.Point(28, 12);
             this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Size = new System.Drawing.Size(75, 101);
+            this.btnVentas.Size = new System.Drawing.Size(90, 113);
             this.btnVentas.TabIndex = 1;
             this.btnVentas.Text = "Ventas";
             this.btnVentas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1088,10 +1102,11 @@ namespace VentasNuevo
             // 
             // btnProductos
             // 
+            this.btnProductos.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProductos.Image = ((System.Drawing.Image)(resources.GetObject("btnProductos.Image")));
-            this.btnProductos.Location = new System.Drawing.Point(162, 25);
+            this.btnProductos.Location = new System.Drawing.Point(135, 12);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Size = new System.Drawing.Size(75, 100);
+            this.btnProductos.Size = new System.Drawing.Size(90, 113);
             this.btnProductos.TabIndex = 2;
             this.btnProductos.Text = "Productos";
             this.btnProductos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1100,10 +1115,11 @@ namespace VentasNuevo
             // 
             // btnAdmin
             // 
+            this.btnAdmin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdmin.Image = ((System.Drawing.Image)(resources.GetObject("btnAdmin.Image")));
-            this.btnAdmin.Location = new System.Drawing.Point(244, 25);
+            this.btnAdmin.Location = new System.Drawing.Point(243, 12);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(75, 99);
+            this.btnAdmin.Size = new System.Drawing.Size(90, 113);
             this.btnAdmin.TabIndex = 3;
             this.btnAdmin.Text = "Admin";
             this.btnAdmin.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1112,10 +1128,11 @@ namespace VentasNuevo
             // 
             // btnReporte
             // 
+            this.btnReporte.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporte.Image = ((System.Drawing.Image)(resources.GetObject("btnReporte.Image")));
-            this.btnReporte.Location = new System.Drawing.Point(325, 25);
+            this.btnReporte.Location = new System.Drawing.Point(352, 12);
             this.btnReporte.Name = "btnReporte";
-            this.btnReporte.Size = new System.Drawing.Size(75, 101);
+            this.btnReporte.Size = new System.Drawing.Size(90, 113);
             this.btnReporte.TabIndex = 4;
             this.btnReporte.Text = "Reportes";
             this.btnReporte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1124,10 +1141,11 @@ namespace VentasNuevo
             // 
             // btnCorte
             // 
+            this.btnCorte.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCorte.Image = ((System.Drawing.Image)(resources.GetObject("btnCorte.Image")));
-            this.btnCorte.Location = new System.Drawing.Point(406, 25);
+            this.btnCorte.Location = new System.Drawing.Point(462, 12);
             this.btnCorte.Name = "btnCorte";
-            this.btnCorte.Size = new System.Drawing.Size(75, 99);
+            this.btnCorte.Size = new System.Drawing.Size(90, 113);
             this.btnCorte.TabIndex = 5;
             this.btnCorte.Text = "Corte";
             this.btnCorte.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -1136,60 +1154,81 @@ namespace VentasNuevo
             // 
             // PanelUsuario
             // 
+            this.PanelUsuario.BackColor = System.Drawing.Color.White;
             this.PanelUsuario.Controls.Add(this.lblFecha);
             this.PanelUsuario.Controls.Add(this.lblHora);
             this.PanelUsuario.Controls.Add(this.lblNombreDelUsuario);
             this.PanelUsuario.Controls.Add(this.lblLogUser);
-            this.PanelUsuario.Location = new System.Drawing.Point(736, 24);
+            this.PanelUsuario.Location = new System.Drawing.Point(617, 12);
             this.PanelUsuario.Name = "PanelUsuario";
-            this.PanelUsuario.Size = new System.Drawing.Size(426, 100);
+            this.PanelUsuario.Size = new System.Drawing.Size(526, 113);
             this.PanelUsuario.TabIndex = 6;
             // 
             // lblFecha
             // 
             this.lblFecha.AutoSize = true;
-            this.lblFecha.Location = new System.Drawing.Point(214, 1);
+            this.lblFecha.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFecha.Location = new System.Drawing.Point(215, 11);
             this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(37, 13);
+            this.lblFecha.Size = new System.Drawing.Size(44, 16);
             this.lblFecha.TabIndex = 3;
             this.lblFecha.Text = "Fecha";
             // 
             // lblHora
             // 
             this.lblHora.AutoSize = true;
-            this.lblHora.Location = new System.Drawing.Point(353, 1);
+            this.lblHora.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.Location = new System.Drawing.Point(353, 11);
             this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(30, 13);
+            this.lblHora.Size = new System.Drawing.Size(35, 16);
             this.lblHora.TabIndex = 2;
             this.lblHora.Text = "Hora";
             // 
             // lblNombreDelUsuario
             // 
             this.lblNombreDelUsuario.AutoSize = true;
-            this.lblNombreDelUsuario.Location = new System.Drawing.Point(4, 11);
+            this.lblNombreDelUsuario.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreDelUsuario.Location = new System.Drawing.Point(3, 41);
             this.lblNombreDelUsuario.Name = "lblNombreDelUsuario";
-            this.lblNombreDelUsuario.Size = new System.Drawing.Size(44, 13);
+            this.lblNombreDelUsuario.Size = new System.Drawing.Size(64, 18);
             this.lblNombreDelUsuario.TabIndex = 1;
             this.lblNombreDelUsuario.Text = "Nombre";
+            this.lblNombreDelUsuario.Click += new System.EventHandler(this.lblNombreDelUsuario_Click);
             // 
             // lblLogUser
             // 
             this.lblLogUser.AutoSize = true;
-            this.lblLogUser.Location = new System.Drawing.Point(4, 44);
+            this.lblLogUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogUser.Location = new System.Drawing.Point(3, 70);
             this.lblLogUser.Name = "lblLogUser";
-            this.lblLogUser.Size = new System.Drawing.Size(43, 13);
+            this.lblLogUser.Size = new System.Drawing.Size(62, 18);
             this.lblLogUser.TabIndex = 0;
             this.lblLogUser.Text = "Usuario";
+            this.lblLogUser.Click += new System.EventHandler(this.lblLogUser_Click);
             // 
             // Hora
             // 
             this.Hora.Enabled = true;
             this.Hora.Tick += new System.EventHandler(this.Hora_Tick);
             // 
+            // btnCobrar
+            // 
+            this.btnCobrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCobrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnCobrar.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCobrar.Location = new System.Drawing.Point(1054, 408);
+            this.btnCobrar.Name = "btnCobrar";
+            this.btnCobrar.Size = new System.Drawing.Size(85, 46);
+            this.btnCobrar.TabIndex = 15;
+            this.btnCobrar.Text = "Cobrar";
+            this.btnCobrar.UseVisualStyleBackColor = false;
+            this.btnCobrar.Click += new System.EventHandler(this.btnCobrar_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1166, 648);
             this.Controls.Add(this.PanelUsuario);
             this.Controls.Add(this.btnCorte);
@@ -1234,7 +1273,6 @@ namespace VentasNuevo
         private System.Windows.Forms.TabControl tcTodo;
         private System.Windows.Forms.TabPage tcVentas;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button btnCobrar;
         private System.Windows.Forms.TextBox tbMosTotal2;
         private System.Windows.Forms.TextBox tbMosCambio;
         private System.Windows.Forms.TextBox tbMosTotal;
@@ -1323,6 +1361,7 @@ namespace VentasNuevo
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmTot;
         private System.Windows.Forms.TextBox txtCaja;
         private System.Windows.Forms.Label lblEnCaja;
+        private System.Windows.Forms.Button btnCobrar;
     }
 }
 

@@ -883,5 +883,25 @@ namespace VentasNuevo
             tbMosPago.Text = "";
             tbMosCambio.Text = "";
         }
+
+        private void lblCantidad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblLogUser_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNombreDelUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
