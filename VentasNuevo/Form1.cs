@@ -57,13 +57,6 @@ namespace VentasNuevo
             cbCategoria.SelectedIndex = 0;
         }
 
-        /*-------------------------ALTERNAR COLORES EN DATAGRIDVIEWS-------------------------*/
-        private void AlternarColorDGV(DataGridView dgv)
-        {
-            dgv.RowsDefaultCellStyle.BackColor = Color.LightBlue;
-            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSkyBlue;
-        }
-
         /*-------------------------BOTON DE VENTAS-------------------------*/
         private void btnVentas_Click(object sender, EventArgs e)
         {
@@ -91,7 +84,7 @@ namespace VentasNuevo
             cargardgvRepor();
             GraficaReportes();
             tcTodo.SelectedIndex = 3;
-            if(dgvProductos.Rows.Count == 0)
+            if (dgvProductos.Rows.Count == 0)
             {
 
             }
@@ -121,6 +114,10 @@ namespace VentasNuevo
                 dgvCorte.ClearSelection();
             }
         }
+
+        /**************************************************
+                **********MODULO DE VENTAS***********
+         **************************************************/
         /*-------------------------BOTON DE COBRO-------------------------*/
         private void btnCobrar_Click(object sender, EventArgs e)
         {
@@ -349,7 +346,6 @@ namespace VentasNuevo
         }
 
 
-
         /*-------------------------RESTA STOCK AL COBRAR, DEPENDIENDO LA CANTIDAD-------------------------*/
         private void RestarStock(int val1, int val2)
         {
@@ -360,6 +356,42 @@ namespace VentasNuevo
             cmd.Parameters.AddWithValue("@Cantidad", val2);
             cmd.ExecuteNonQuery();
         }
+
+        /*EVENTO PARA MODIFICAR CANTIDAD DE PRODUCTOS EN EL CARRITO*/
+        private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            SumaTotal();
+        }
+
+        /*-------------------------REMUEVE LA FILA SI SE DESEA CANCELAR LA COMPRA DE UN PRODUCTO------------------------*/
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
+            SumaTotal();
+        }
+
+        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
+        private void tbProducto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            restringirTBox(e);
+        }
+
+        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
+        private void tbCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            restringirTBox(e);
+        }
+
+        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
+        private void tbMosPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            restringirTBox(e);
+        }
+
+
+        /**************************************************
+              **********MODULO DE PRODUCTOS***********
+        **************************************************/
 
 
         /*-------------------------FUNCION PARA AGREGAR DATOS A DATAGRIDVIEW DE PRODUCTOS EN SU RESPECTIVA CATEGORIA DESDE LA BD-------------------------*/
@@ -384,11 +416,6 @@ namespace VentasNuevo
             }
         }
 
-        /*EVENTO PARA MODIFICAR CANTIDAD DE PRODUCTOS EN EL CARRITO*/
-        private void dataGridView1_RowValidated(object sender, DataGridViewCellEventArgs e)
-        {
-            SumaTotal();
-        }
 
         /*-------------------------EVENTO AL HACER CLICK EN CUALQUIER FILA DE LA TABLA QUE MUESTRA CATEGORIAS DE PRODUCTOS-------------------------*/
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -397,13 +424,14 @@ namespace VentasNuevo
             {
                 return;
             }
-            else { 
+            else
+            {
 
                 try
                 {
                     limpiarTXBox();
                     comboBox1.SelectedIndex = 0;
-                   
+
                     //  string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
                     valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
                     RecargarDGV();
@@ -415,11 +443,12 @@ namespace VentasNuevo
             }
         }
 
+        /*-------------------------RECARGA EL DATAGRIDVIEW AL AGREGAR UN PRODUCTO-------------------------*/
         private void RecargarDGV()
         {
             conexion.Open();
             string selPro = "Select Producto, nombre, Contenido, Precio, Stock from Productos Where idCategoria = @id";
-           // string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
+            // string valorCelda = dataGridView2.Rows[e.RowIndex].Cells[0].Value.ToString();
 
             using (SqlCommand cmd = new SqlCommand(selPro, conexion))
             {
@@ -446,7 +475,8 @@ namespace VentasNuevo
             {
                 return;
             }
-            else { 
+            else
+            {
                 try
                 {
                     comboBox1.SelectedIndex = 0;
@@ -480,78 +510,88 @@ namespace VentasNuevo
             }
         }
 
-        /*-------------------------RESTRINGIR CARCATERES EN TEXTBOX-------------------------*/
-
-        private void restringirTBox(KeyPressEventArgs e)
+        /*-------------------------OPCIONES DE COMBOBOX------------------------*/
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar))
+            if (comboBox1.SelectedIndex == 0)
             {
-                e.Handled = false;
+                DeshabTextBox();
             }
-            else if (Char.IsControl(e.KeyChar))
+            if (comboBox1.SelectedIndex == 1)
             {
-                e.Handled = false;
+                habTextBox();
+                int id = 0;
+                /* id = valorIDProducto(id) + 1;
+                 txtDescID.Text = id.ToString();*/
+                txtDescID.Text = valorIDProducto(id).ToString();
             }
-            else
+        }
+        /*-------------------------MODIFICACION ID DE LA TABLA DE PRODUCTOS------------------------*/
+        private int valorIDProducto(int val1 = 0)
+        {
+            conexion.Open();
+            String query = "SELECT TOP 1 Producto FROM Productos ORDER BY Producto DESC";
+            SqlCommand cmd = new SqlCommand(query, conexion);
+            object valor = cmd.ExecuteScalar();
+            if (valor != null)
             {
-                e.Handled = true;
+                val1 = Convert.ToInt32(valor);
             }
+            conexion.Close();
+            return val1 + 1;
         }
-
-        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
-
-        private void tbProducto_KeyPress(object sender, KeyPressEventArgs e)
+        /*-------------------------SELECCIONA EL NOMBRE DE CATEGORIA PARA COMBOBOX------------------------*/
+        private void CombCategorias()
         {
-            restringirTBox(e);
-        }
-
-        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
-        private void tbCantidad_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            restringirTBox(e);
-        }
-
-        /*-------------------------RESTRICCION EN TEXTBOX------------------------*/
-        private void tbMosPago_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            restringirTBox(e);
-        }
-
-        /*-------------------------CENTRAR COLUMNAS DE DATAGRIDVIEWS-----------------------*/
-        private void centrarColumnas(DataGridView dgv)
-        {
-            foreach(DataGridViewColumn col in dgv.Columns)
+            try
             {
-                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                string cat = "SELECT nombre FROM Categoria";
+                conexion.Open();
+
+                SqlCommand cmd = new SqlCommand(cat, conexion);
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    cbCategoria.Items.Add(dr["nombre"].ToString());
+                }
+                conexion.Close();
+
             }
-            dgv.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.ToString());
+            }
         }
 
-        /*-------------------------ELIMINAR PRIMERA COLUMNA DE DATAGRIDVIEW ------------------------*/
-        private void QuitarColumnaUno()
+        /*-------------------------COLOCA NOMBRE DE CATEGORIA-----------------------*/
+        private void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView2.RowHeadersVisible = false;
-            dgvProductos.RowHeadersVisible = false;
-            dgvReportes.RowHeadersVisible = false;
+            if (cbCategoria.SelectedIndex == 0)
+            {
+                txtDescCat.Text = "";
+            }
+            int seleccionado = cbCategoria.SelectedIndex;
+            //string seleccionado = cbCategoria.SelectedIndex.ToString();
+            string nombre = "SELECT idCategoria FROM Categoria WHERE idCategoria = @Categoria";
+
+
+            conexion.Open();
+            SqlCommand cmd = new SqlCommand(nombre, conexion);
+            cmd.Parameters.AddWithValue("@Categoria", seleccionado);
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.Read())
+            {
+                txtDescCat.Text = Convert.ToString(dr.GetInt32(0));
+            }
+            conexion.Close();
         }
 
-        /*-------------------------LIMPIAR TEXTBOX EN VENTAS------------------------*/
-        private void limpiarTXBox()
-        {
-            txtProNom.Text = "";
-            txtProCont.Text = "";
-            txtDesCant.Text = "";
-            txtDescPreCom.Text = "";
-            txtDescPreVen.Text = "";
-        }
 
-        /*-------------------------TEXTBOX MÁS GRANDE-------------------------*/
-        private void tamTextBox(){
-            txtProCont.AutoSize = false;
-            txtProCont.Size = new Size(250, 45);
-        }
+
+
+        /**************************************************
+           **********MODULO DE ADMINISTRACION***********
+         **************************************************/
 
         /*-------------------------OBTENCION DE 5 PRODUCTOS MAS VENDIDOS------------------------*/
         private void VentasTotalesGRA()
@@ -563,13 +603,13 @@ namespace VentasNuevo
             da.Fill(dt);
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
             this.chart1.Titles.Add("Productos mas vendidos");
-            if(dt.Rows.Count > 0)
+            if (dt.Rows.Count > 0)
             {
-                for(int i = 0; i < dt.Rows.Count; i++)
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     dr = dt.Rows[i];
-                    Series series = chart1.Series.Add(dr.ItemArray[0].ToString()+" "+dr.ItemArray[1]);
-                   series.Points.Add(Convert.ToDouble(dr.ItemArray[2]));
+                    Series series = chart1.Series.Add(dr.ItemArray[0].ToString() + " " + dr.ItemArray[1]);
+                    series.Points.Add(Convert.ToDouble(dr.ItemArray[2]));
                 }
             }
         }
@@ -614,100 +654,9 @@ namespace VentasNuevo
         }
 
 
-        /*-------------------------OPCIONES DE COMBOBOX------------------------*/
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(comboBox1.SelectedIndex == 0)
-            {
-                DeshabTextBox();
-            }
-            if(comboBox1.SelectedIndex == 1)
-            {
-                habTextBox();
-                int id = 0;
-                /* id = valorIDProducto(id) + 1;
-                 txtDescID.Text = id.ToString();*/
-                txtDescID.Text = valorIDProducto(id).ToString();
-            }
-        }
-
-        /*-------------------------HABILITAR ESCRITURA EN TEXTBOXS------------------------*/
-        private void habTextBox()
-        {
-            limpTXB2();
-            btnDescAgregar.Enabled = true;
-
-            txtProNom.ReadOnly = false;
-            txtProCont.ReadOnly = false;
-            txtDesCant.ReadOnly = false;
-            txtDescPreCom.ReadOnly = false;
-            txtDescPreVen.ReadOnly = false;
-            cbCategoria.Enabled = true;
-        }
-
-        /*-------------------------DESHABILITAR ESCRITURA EN TEXTBOXS------------------------*/
-        private void DeshabTextBox()
-        {
-
-            limpTXB2();
-            txtProNom.ReadOnly = true;
-            txtProCont.ReadOnly = true;
-            txtDesCant.ReadOnly = true;
-            txtDescPreCom.ReadOnly = true;
-            txtDescPreVen.ReadOnly = true;
-            txtDescCat.ReadOnly = true;
-            btnDescAgregar.Enabled = false;
-            cbCategoria.Enabled = false;
-        }
-
-        /*-------------------------LIMPIAR TEXTBOXS EN APARTADO DE PRODUCTOS------------------------*/
-        private void limpTXB2()
-        {
-            txtProNom.Text = "";
-            txtProCont.Text = "";
-            txtDesCant.Text = "";
-            txtDescPreCom.Text = "";
-            txtDescPreVen.Text = "";
-            txtDescCat.Text = "";
-            txtDescID.Text = "";
-        }
-
-
-        private void CombCategorias()
-        {
-            try
-            {
-                string cat = "SELECT nombre FROM Categoria";
-                conexion.Open();
-
-                SqlCommand cmd = new SqlCommand(cat, conexion);
-                SqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    cbCategoria.Items.Add(dr["nombre"].ToString());
-                }
-                conexion.Close();
-
-            }catch(Exception ex)
-            {
-                MessageBox.Show(""+ex.ToString());
-            }
-        }
-
-        /*-------------------------MODIFICACION ID DE LA TABLA DE PRODUCTOS------------------------*/
-        private int valorIDProducto(int val1=0)
-        {
-            conexion.Open();
-            String query = "SELECT TOP 1 Producto FROM Productos ORDER BY Producto DESC";
-            SqlCommand cmd = new SqlCommand(query, conexion);
-            object valor = cmd.ExecuteScalar();
-            if (valor != null)
-            {
-                val1 = Convert.ToInt32(valor);
-            }
-            conexion.Close();
-            return val1+1;
-        }
+        /**************************************************
+               **********MODULO DE REPORTES***********
+         **************************************************/
 
         /*-------------------------MUESTRA EL TOTAL DE VENTAS AL MES EN DATAGRIDVIEW------------------------*/
         private void cargardgvRepor()
@@ -747,43 +696,47 @@ namespace VentasNuevo
             conexion.Close();
         }
 
-        private void cbCategoria_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(cbCategoria.SelectedIndex == 0)
-            {
-                txtDescCat.Text = "";
-            }
-            int seleccionado = cbCategoria.SelectedIndex;
-            //string seleccionado = cbCategoria.SelectedIndex.ToString();
-            string nombre = "SELECT idCategoria FROM Categoria WHERE idCategoria = @Categoria";
 
 
-            conexion.Open();
-            SqlCommand cmd = new SqlCommand(nombre, conexion);
-            cmd.Parameters.AddWithValue("@Categoria",seleccionado);
-            SqlDataReader dr = cmd.ExecuteReader();
-            if (dr.Read())
-            {
-                txtDescCat.Text = Convert.ToString(dr.GetInt32(0));
-            }
-            conexion.Close();
-        }
+        /**************************************************
+                **********MODULO DE CORTE***********
+         **************************************************/
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            actEstado();
-            Application.Exit();
-        }
-
+        /*-------------------------EVENTO AL CLICKEAR EN EL BOTON DE CORTE------------------------*/
         private void btnTerminarCorte_Click(object sender, EventArgs e)
         {
-            Corte();
-            actEstado();
-            Login login = new Login();
-            login.Show();
-            this.Hide();
-            
+            if (comCamCorte())
+            {
+
+            }
+            else
+            {
+                Corte();
+                actEstado();
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+            }
+
         }
+
+        /*-------------------------COMPRUEBA LOS CAMPOS DEL MÓDULO DE CORTE------------------------*/
+        private bool comCamCorte()
+        {
+            bool error;
+            if (string.IsNullOrEmpty(txtCaja.Text) || string.IsNullOrEmpty(txtTotVendido.Text) || string.IsNullOrEmpty(txtVenCort.Text))
+            {
+                MessageBox.Show("Llene los campos necesarios", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                error = true;
+            }
+            else
+            {
+                error = false;
+            }
+            return error;
+        }
+
+        /*-------------------------ACTUALIZA A ACTIVO O NO AL USUARIO-----------------------*/
         private void actEstado()
         {
             string act = "UPDATE Usuario SET Estado = 0, FechaEnt = NULL WHERE nomUsuario = @nomUser";
@@ -794,18 +747,17 @@ namespace VentasNuevo
             SqlDataReader dr = cmd.ExecuteReader();
             conexion.Close();
         }
+
+
+        /*-------------------------MENSAJE EN LA ESQUINA SUPERIOR DERECHA PARA EL USUARIO, CON SU NOMBRE DE USUARIO Y REAL. TAMBIEN LO COLOCA EN MÓDULO CORTE------------------------*/
         private void lblUsuario()
         {
             lblLogUser.Text = LoginCache.nomUsuario;
-            lblNombreDelUsuario.Text = "Bienvenido "+LoginCache.nombre + " " + LoginCache.Apepa + " " + LoginCache.ApeMat;
+            lblNombreDelUsuario.Text = "Bienvenido " + LoginCache.nombre + " " + LoginCache.Apepa + " " + LoginCache.ApeMat;
             lblUsuCort.Text = LoginCache.nombre + " " + LoginCache.Apepa + " " + LoginCache.ApeMat;
         }
 
-        private void Hora_Tick(object sender, EventArgs e)
-        {
-            lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
-            lblFecha.Text = DateTime.Now.ToLongDateString();
-        }
+        /*-------------------------LLENA DATAGRIDVIEW DE CORTE, MUESTRA LO VENDIDO POR EL USUARIO DESDE SU INICIO HASTA EL FINAL------------------------*/
         private void llenarDGVCorte()
         {
             conexion.Open();
@@ -823,23 +775,24 @@ namespace VentasNuevo
                 conexion.Close();
             }
         }
+
+        /*-------------------------SUMA DE VENTAS TOTALES HECHAS POR UN USUARIO DESDE INICIO AL FINAL------------------------*/
         private void sumaVentas()
         {
             string totCaja = "SELECT SUM(i.TotalPre) AS SUMA FROM Inter i INNER JOIN Usuario u ON Fecha BETWEEN u.FechaEnt AND i.Fecha;";
 
             conexion.Open();
 
-            using(SqlCommand cmd = new SqlCommand(totCaja, conexion))
+            using (SqlCommand cmd = new SqlCommand(totCaja, conexion))
             {
                 txtVenCort.Text = Convert.ToString(cmd.ExecuteScalar());
 
                 conexion.Close();
             }
 
-
-           // txtCaja.Text = interCorte.TotalVenta.ToString();
         }
 
+        /*-------------------------INGRESA CORTE A BASE DE DATOS------------------------*/
         private void Corte()
         {
             string corte = "INSERT INTO Corte (idUsuario, Total, FechaCorte, EnCaja, Observaciones) VALUES (@idUser,@Total,GETDATE(),@Caja,@Observaciones);";
@@ -858,6 +811,7 @@ namespace VentasNuevo
 
         }
 
+        /*-------------------------MUESTRA EL TOTAL GENERADO ENTRE TODOS LOS PRODUCTOS------------------------*/
         private void CorteTotal()
         {
             double Tot = 0;
@@ -868,11 +822,21 @@ namespace VentasNuevo
             txtTotVendido.Text = Tot.ToString("0.00", CultureInfo.InvariantCulture);
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+
+
+        /**************************************************
+         **********CONTROLES/FUNCIONES GENERALES***********
+         **************************************************/
+
+        /*-------------------------ALTERNAR COLORES EN DATAGRIDVIEWS-------------------------*/
+        private void AlternarColorDGV(DataGridView dgv)
         {
-            dataGridView1.Rows.RemoveAt(dataGridView1.CurrentRow.Index);
-            SumaTotal();
+            dgv.RowsDefaultCellStyle.BackColor = Color.LightBlue;
+            dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.LightSkyBlue;
         }
+
+        /*-------------------------LIMPIA TEXTBOX DE MODULO VENTAS------------------------*/
+
         private void LimpiarTXTVentas()
         {
             tbProducto.Text = "";
@@ -884,24 +848,113 @@ namespace VentasNuevo
             tbMosCambio.Text = "";
         }
 
-        private void lblCantidad_Click(object sender, EventArgs e)
+        /*-------------------------RESTRINGIR CARCATERES EN TEXTBOX-------------------------*/
+        private void restringirTBox(KeyPressEventArgs e)
         {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+            }
+        }
+
+        /*-------------------------CENTRAR COLUMNAS DE DATAGRIDVIEWS-----------------------*/
+        private void centrarColumnas(DataGridView dgv)
+        {
+            foreach (DataGridViewColumn col in dgv.Columns)
+            {
+                col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+            dgv.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
         }
 
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
 
+        /*-------------------------ELIMINAR PRIMERA COLUMNA DE DATAGRIDVIEW ------------------------*/
+        private void QuitarColumnaUno()
+        {
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView2.RowHeadersVisible = false;
+            dgvProductos.RowHeadersVisible = false;
+            dgvReportes.RowHeadersVisible = false;
         }
 
-        private void lblLogUser_Click(object sender, EventArgs e)
+        /*-------------------------LIMPIAR TEXTBOX EN VENTAS------------------------*/
+        private void limpiarTXBox()
         {
-
+            txtProNom.Text = "";
+            txtProCont.Text = "";
+            txtDesCant.Text = "";
+            txtDescPreCom.Text = "";
+            txtDescPreVen.Text = "";
         }
 
-        private void lblNombreDelUsuario_Click(object sender, EventArgs e)
+        /*-------------------------TEXTBOX MÁS GRANDE-------------------------*/
+        private void tamTextBox()
+        {
+            txtProCont.AutoSize = false;
+            txtProCont.Size = new Size(250, 45);
+        }
+        /*-------------------------DESHABILITAR ESCRITURA EN TEXTBOXS------------------------*/
+        private void DeshabTextBox()
         {
 
+            limpTXB2();
+            txtProNom.ReadOnly = true;
+            txtProCont.ReadOnly = true;
+            txtDesCant.ReadOnly = true;
+            txtDescPreCom.ReadOnly = true;
+            txtDescPreVen.ReadOnly = true;
+            txtDescCat.ReadOnly = true;
+            btnDescAgregar.Enabled = false;
+            cbCategoria.Enabled = false;
         }
+        /*-------------------------HABILITAR ESCRITURA EN TEXTBOXS------------------------*/
+        private void habTextBox()
+        {
+            limpTXB2();
+            btnDescAgregar.Enabled = true;
+
+            txtProNom.ReadOnly = false;
+            txtProCont.ReadOnly = false;
+            txtDesCant.ReadOnly = false;
+            txtDescPreCom.ReadOnly = false;
+            txtDescPreVen.ReadOnly = false;
+            cbCategoria.Enabled = true;
+        }
+        /*-------------------------LIMPIAR TEXTBOXS EN APARTADO DE PRODUCTOS------------------------*/
+        private void limpTXB2()
+        {
+            txtProNom.Text = "";
+            txtProCont.Text = "";
+            txtDesCant.Text = "";
+            txtDescPreCom.Text = "";
+            txtDescPreVen.Text = "";
+            txtDescCat.Text = "";
+            txtDescID.Text = "";
+        }
+
+        /*-------------------------HORA Y FECHA ACTUAL EN ESQUINA SUPERIOR DERECHA------------------------*/
+        private void Hora_Tick(object sender, EventArgs e)
+        {
+            lblHora.Text = DateTime.Now.ToString("hh:mm:ss");
+            lblFecha.Text = DateTime.Now.ToLongDateString();
+        }
+
+        /*-------------------------FUNCION AL CERRAR EL FORM------------------------*/
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            actEstado();
+            Application.Exit();
+        }
+
     }
+
 }
