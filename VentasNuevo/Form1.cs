@@ -20,7 +20,6 @@ namespace VentasNuevo
     {
         SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-74BBU83\\SQLEXPRESS ; Initial Catalog=VENTAS ; integrated security = true");
 
-        float suma = 0;
         double TotalC = 0;
         string valorCelda2;
         string valorCelda;
@@ -115,9 +114,9 @@ namespace VentasNuevo
             }
         }
 
-        /**************************************************
-                **********MODULO DE VENTAS***********
-         **************************************************/
+                        /**************************************************
+                                **********MODULO DE VENTAS***********
+                         **************************************************/
         /*-------------------------BOTON DE COBRO-------------------------*/
         private void btnCobrar_Click(object sender, EventArgs e)
         {
@@ -389,9 +388,9 @@ namespace VentasNuevo
         }
 
 
-        /**************************************************
-              **********MODULO DE PRODUCTOS***********
-        **************************************************/
+                                    /**************************************************
+                                          **********MODULO DE PRODUCTOS***********
+                                    **************************************************/
 
 
         /*-------------------------FUNCION PARA AGREGAR DATOS A DATAGRIDVIEW DE PRODUCTOS EN SU RESPECTIVA CATEGORIA DESDE LA BD-------------------------*/
@@ -589,9 +588,9 @@ namespace VentasNuevo
 
 
 
-        /**************************************************
-           **********MODULO DE ADMINISTRACION***********
-         **************************************************/
+                                /**************************************************
+                                   **********MODULO DE ADMINISTRACION***********
+                                 **************************************************/
 
         /*-------------------------OBTENCION DE 5 PRODUCTOS MAS VENDIDOS------------------------*/
         private void VentasTotalesGRA()
@@ -654,9 +653,9 @@ namespace VentasNuevo
         }
 
 
-        /**************************************************
-               **********MODULO DE REPORTES***********
-         **************************************************/
+                                        /**************************************************
+                                               **********MODULO DE REPORTES***********
+                                         **************************************************/
 
         /*-------------------------MUESTRA EL TOTAL DE VENTAS AL MES EN DATAGRIDVIEW------------------------*/
         private void cargardgvRepor()
@@ -698,9 +697,9 @@ namespace VentasNuevo
 
 
 
-        /**************************************************
-                **********MODULO DE CORTE***********
-         **************************************************/
+                                    /**************************************************
+                                            **********MODULO DE CORTE***********
+                                     **************************************************/
 
         /*-------------------------EVENTO AL CLICKEAR EN EL BOTON DE CORTE------------------------*/
         private void btnTerminarCorte_Click(object sender, EventArgs e)
@@ -824,9 +823,9 @@ namespace VentasNuevo
 
 
 
-        /**************************************************
-         **********CONTROLES/FUNCIONES GENERALES***********
-         **************************************************/
+                                        /**************************************************
+                                         **********CONTROLES/FUNCIONES GENERALES***********
+                                         **************************************************/
 
         /*-------------------------ALTERNAR COLORES EN DATAGRIDVIEWS-------------------------*/
         private void AlternarColorDGV(DataGridView dgv)

@@ -13,7 +13,6 @@ namespace VentasNuevo
 {
     public partial class Login : Form
     {
-        conexionbd con = new conexionbd();
         Form1 form = new Form1();
         SqlConnection conexion = new SqlConnection("Data Source=DESKTOP-74BBU83\\SQLEXPRESS ; Initial Catalog=VENTAS ; integrated security = true");
         
@@ -22,6 +21,11 @@ namespace VentasNuevo
             InitializeComponent();
         }
 
+                                            /**************************************************
+                                                    **********MODULO DE LOGUEO***********
+                                             **************************************************/
+
+        /******************FUNCION PARA LOGUEAR AL USUARIO****************************/
         private void login()
         {
             string loguarse = "select * FROM Usuario WHERE nomUsuario ='" + txtUsuario.Text + "' AND contra = '" + txtContra.Text + "'";
@@ -51,6 +55,8 @@ namespace VentasNuevo
             conexion.Close();
         }
 
+        /******************ACTUALIZA EL ESTADO DEL USUARIO A ACTIVO****************************/
+
         private void actEstado()
         {
             string act = "UPDATE Usuario SET Estado = 1, FechaEnt = @fecha WHERE nomUsuario = @nomUser";
@@ -69,12 +75,14 @@ namespace VentasNuevo
 
         }
 
+        /******************EVENTO CLICK PARA BOTON***************************/
         private void btnLogin_Click(object sender, EventArgs e)
         {
             login();
             actEstado();            
         }
 
+        /******************CERRAR FORM**************************/
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
